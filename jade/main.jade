@@ -1,0 +1,14 @@
+doctype 5
+html(lang='en', ng-app='lolconf')
+  head
+    title LoLConf
+    link(href='bower_components/topcoat/css/topcoat-desktop-light.min.css', rel='stylesheet')
+    link(href='bower_components/font-awesome/build/assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+    link(href='app.css', rel='stylesheet')
+    script(type='text/javascript', src='bower_components/jquery/jquery.js')
+    script(type='text/javascript', src='bower_components/angular-unstable/angular.js')
+    script(type='text/javascript', src='app.js')
+  body
+    h1 page
+    .page
+    #container(ng-view)

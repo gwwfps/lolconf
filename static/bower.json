@@ -1,0 +1,16 @@
+{
+  "name": "lolconf-gui",
+  "version": "0.1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular-unstable": "~1.1.5",
+    "jquery": "~2.0.1",
+    "font-awesome": "~3.1.1",
+    "topcoat": "~0.5.1",
+    "meny": "~1.2.0"
+  }
+}
