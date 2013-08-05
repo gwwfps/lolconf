@@ -1,4 +1,4 @@
-angular.module \lolconf .factory 'LCAppConfig', (LC-Logger) -> 
+angular.module \lolconf .factory \LCAppConfig, -> 
   require! nconf
   nconf.file 'config.json'
   
@@ -7,5 +7,5 @@ angular.module \lolconf .factory 'LCAppConfig', (LC-Logger) ->
   
   * get: nconf~get
     set: !(prop-name, value) ->
-      nconf.set ...
+      nconf~set ...
       nconf.save! 

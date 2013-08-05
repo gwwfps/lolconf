@@ -1,0 +1,41 @@
+angular.module \lolconf .factory \LCGameLocation, (LC-app-config) -> 
+  require! {
+    exists: fs.exists-sync
+    path.resolve
+    'windows/lib/registry'
+  }
+  {join} = require 'prelude-ls'
+
+  const CONFIG_KEY = 'game_location'
+  const IS_64BIT = process.arch == 'x64' || process.env.has-own-property 'PROCESSOR_ARCHITEW6432'
+
+  get-location = ->
+    location = LC-app-config.get CONFIG_KEY
+    if validate location
+      return location
+    set-location auto-detect!
+
+  set-location = !(location) ->
+    if validate location
+      LC-app-config.set CONFIG_KEY, location
+      return location
+    
+  auto-detect = !->
+    rads-key-name =  join '\\' [
+      'HKEY_LOCAL_MACHINE' 'SOFTWARE'
+      'Wow6432Node' if IS_64BIT
+      'Riot Games' 'RADS' ]
+    try
+      rads-key = registry rads-key-name
+      if \LocalRootFolder of rads-key
+        return resolve rads-key[\LocalRootFolder].value, '..'
+
+  validate = (location) ->
+    if !location
+      return false
+    exists location
+  
+  {
+    get-location: get-location
+    set-location: set-location
+  }
