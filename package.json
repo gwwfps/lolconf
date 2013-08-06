@@ -15,9 +15,8 @@
     "grunt-contrib-stylus": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.4.1",
-    "grunt-lsc": "~1.0.0"
-  },
-  "dependencies": {
+    "grunt-lsc": "~1.0.0",
+    "stylus": "~0.36.0",
     "nib": "~0.9.1"
   }
 }

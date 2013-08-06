@@ -38,8 +38,12 @@ module.exports = (grunt) ->
  
     stylus:
       main:
+        options:
+          use: [
+            require 'nib'
+          ]
         files:
-          '<%= outputDir %>/app.css': ['stylus/*.stylus']
+          '<%= outputDir %>/app.css': ['stylus/app.styl']
 
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
