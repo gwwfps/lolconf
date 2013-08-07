@@ -1,2 +1,12 @@
-angular.module \lolconf .controller \IndexCtrl, !($scope) -> 
-  $scope.arch = process.env.PROCESSOR_ARCHITEW6432
+angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location) ->   
+  {defer} = require 'lodash'
+
+  if !LC-game-location.get!
+    defer !->
+      $scope.$emit \modal:show, \choose-location
+
+  $scope.confirm-location = !->
+    if LC-game-location.set $scope.game-location == $scope.game-location
+      $scope.$emit \modal:hide
+    else
+      alert "Invalid location."

@@ -1,3 +1,6 @@
 div(ng-controller="IndexCtrl")
-  p(ng-bind="arch")
-  
+  div(lc-modal="choose-location")
+    p Before everything, please specify the location of your game directory.
+    p
+      input(ng-model="gameLocation")
+    button(ng-click="confirmLocation()") Confirm
