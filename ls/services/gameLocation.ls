@@ -30,10 +30,18 @@ angular.module \lolconf .factory \LCGameLocation, (LC-app-config) ->
       if \LocalRootFolder of rads-key
         return resolve rads-key[\LocalRootFolder].value, '..'
 
+  launcher-path = (location) ->
+    if location
+      resolve location, 'lol.launcher.exe'
+
+  config-path = (location) ->
+    if location
+      resolve location, 'Config', 'Game.cfg'
+
   validate = (location) ->
     if !location
       return false
-    exists location
+    (exists location) && (exists launcher-path location) && (exists config-path location)
   
   {
     get: get-location
