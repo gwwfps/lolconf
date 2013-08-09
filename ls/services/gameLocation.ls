@@ -46,4 +46,5 @@ angular.module \lolconf .factory \LCGameLocation, (LC-app-config) ->
   {
     get: get-location
     set: set-location
+    config-path: config-path
   }
