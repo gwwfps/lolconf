@@ -1,9 +1,9 @@
 angular.module \lolconf .factory \LCGameConfig, (LC-game-location) -> 
   require! {
-    stream: fs.create-read-stream
-    lazy
+    read: fs.read-file-sync
+    write: fs.write-file-sync
   }
-  {first, last, tail, initial, split} = require 'prelude-ls'
+  {first, last, tail, initial, split, each, join} = require 'prelude-ls'
   {clone-deep} = require 'lodash'
 
   supported-keys = {}
@@ -19,15 +19,15 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
       config[section][key] = value
 
     section = ''
-    reader = new lazy stream LC-game-location.config-path!
-    reader.lines.each (line) ->
+    lines = read LC-game-location.config-path!
+    each lines, (line) ->
       line = line.trim!
       if first line == '[' and last line == ']'
         section := initial tail line
       else if '=' in line
         if !section
           parse-error!
-        apply set-value, split config[section]
+        apply set-value, (split config[section])
       else if line
         parse-error!
 
@@ -37,9 +37,13 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
   original = clone-deep config
 
   write-to-file = ->
-    ...
+    lines = []
+    for values, section in config
+      lines.push '[' + section + ']'
+      for value, key in values
+        lines.push key + '=' + value
+    write LC-game-location.config-path!, (join '\n', lines)
 
 
   {
-
   }
