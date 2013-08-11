@@ -3,10 +3,8 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
     read: fs.read-file-sync
     write: fs.write-file-sync
   }
-  {first, last, tail, initial, split, each, join} = require 'prelude-ls'
+  {first, last, tail, initial, split, each, join, apply} = require 'prelude-ls'
   {clone-deep} = require 'lodash'
-
-  supported-keys = {}
 
   parse-error = ->
     throw new Error 'Error parsing game configuration file.'
@@ -44,6 +42,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
         lines.push key + '=' + value
     write LC-game-location.config-path!, (join '\n', lines)
 
+  
 
   {
   }
