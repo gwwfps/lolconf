@@ -17,6 +17,7 @@
     "grunt-contrib-clean": "~0.4.1",
     "grunt-lsc": "~1.0.0",
     "stylus": "~0.36.0",
-    "nib": "~0.9.1"
+    "nib": "~0.9.1",
+    "grunt-contrib-watch": "~0.5.1"
   }
 }
