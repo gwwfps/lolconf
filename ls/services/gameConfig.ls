@@ -1,10 +1,11 @@
 angular.module \lolconf .factory \LCGameConfig, (LC-game-location) -> 
   require! {
-    read: fs.read-file-sync
+    stream: fs.create-read-stream
     write: fs.write-file-sync
+    lazy
   }
   {first, last, tail, initial, split, each, join, apply} = require 'prelude-ls'
-  {clone-deep} = require 'lodash'
+  {clone-deep, contains} = require 'lodash'
 
   supported-settings = {
     FloatingText: <[ Absorbed_Enabled OMW_Enabled SpellDamage_Enabled Damage2_Enabled
@@ -25,12 +26,12 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
       config[section][key] = value
 
     section = ''
-    lines = read LC-game-location.config-path!
-    each lines, (line) ->
-      line = line.trim!
-      if first line == '[' and last line == ']'
+    lines = lazy (stream LC-game-location.config-path!) .lines
+    lines.for-each (line) ->
+      line = line.to-string!trim!
+      if (first line) == '[' and (last line) == ']'
         section := initial tail line
-      else if '=' in line
+      else if contains line, '='
         if !section
           parse-error!
         apply set-value, (split config[section])
