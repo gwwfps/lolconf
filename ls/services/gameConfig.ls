@@ -1,4 +1,4 @@
-angular.module \lolconf .factory \LCGameConfig, (LC-game-location) -> 
+angular.module \lolconf .factory \LCGameConfig, (LC-game-location, LC-logger) -> 
   require! {
     read: fs.read-file-sync
     write: fs.write-file-sync
@@ -37,7 +37,6 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
       else if line
         parse-error!), lines
 
-
     config
 
   config = parse!
@@ -45,10 +44,11 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
 
   write-to-file = ->
     lines = []
-    for values, section in config
+    for section, values of config
       lines.push '[' + section + ']'
-      for value, key in values
+      for key, value of values
         lines.push key + '=' + value
+    LC-logger.debug "Writing to config file @ %s", LC-game-location.config-path!
     write LC-game-location.config-path!, (join '\n', lines)
 
   find-section = (key) ->
@@ -59,7 +59,12 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
   get-setting = (key) ->
     config[find-section key][key]
 
+  set-setting = !(key, value) ->
+    config[find-section key][key] = value
+    write-to-file!
+
   {
     supported-settings: supported-settings
     get: get-setting
+    set: set-setting
   }
