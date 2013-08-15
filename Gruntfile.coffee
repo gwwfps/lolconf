@@ -65,9 +65,15 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-lsc'
 
   grunt.registerTask 'default', [
-    'init', 'clean', 'copy'
+    'init', 'clean', 'copy', 'debug'
     'lsc', 'jade', 'stylus'
     'watch'
   ]
   grunt.registerTask 'init', () ->
     grunt.file.mkdir grunt.config('outputDir')
+
+  grunt.registerTask 'debug', () ->
+    nwPkgPath = path.join(grunt.config('outputDir'), 'package.json')
+    nwPkg = grunt.file.readJSON nwPkgPath
+    nwPkg.window.toolbar = true
+    grunt.file.write nwPkgPath, JSON.stringify(nwPkg)
