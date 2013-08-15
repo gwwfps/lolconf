@@ -1,8 +1,11 @@
 module.exports = (grunt) ->
   path = require 'path'
+  _ = grunt.util._
 
-  grunt.initConfig
-    pkg: grunt.file.readJSON('package.json')
+  nwModules = _.map _.keys(grunt.file.readJSON('package.json').dependencies), (name) ->
+    path.join 'node_modules', name, '**'
+
+  grunt.initConfig    
     outputDir: path.join(__dirname, 'build')
 
     clean: ['<%= outputDir %>']
@@ -11,8 +14,7 @@ module.exports = (grunt) ->
       main:
         files: [
           expand: true
-          cwd: 'static/'
-          src: '**'
+          src: _.union ['package.json', 'fonts/*', 'bower_components/**'], nwModules
           dest: '<%= outputDir %>/'
         ]        
 

@@ -19,5 +19,21 @@
     "stylus": "~0.36.0",
     "nib": "~0.9.1",
     "grunt-contrib-watch": "~0.5.1"
+  },
+  "dependencies": {
+    "lodash": "~1.2.1",
+    "winston": "~0.7.1",
+    "request": "~2.21.0",
+    "nconf": "~0.6.7",
+    "windows": "0.0.6",
+    "prelude-ls": "~1.0.3"
+  },
+  "main": "main.html#/",
+  "window": {
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "resizable": false
   }
 }
