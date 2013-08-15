@@ -1,10 +1,9 @@
 angular.module \lolconf .factory \LCGameConfig, (LC-game-location) -> 
   require! {
-    stream: fs.create-read-stream
+    read: fs.read-file-sync
     write: fs.write-file-sync
-    lazy
   }
-  {first, last, tail, initial, split, each, join, apply} = require 'prelude-ls'
+  {first, last, tail, initial, split, each, join, apply, obj-to-pairs, find} = require 'prelude-ls'
   {clone-deep, contains} = require 'lodash'
 
   supported-settings = {
@@ -20,23 +19,24 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
 
   parse = ->
     config = {}
-    set-value = (section, key, value) ->
+    set-value = !(section, key, value) -->
       if !config[section]
         config[section] = {}
       config[section][key] = value
 
     section = ''
-    lines = lazy (stream LC-game-location.config-path!) .lines
-    lines.for-each (line) ->
+    lines = read LC-game-location.config-path! .to-string! .split '\n'
+    each (!(line) ->
       line = line.to-string!trim!
       if (first line) == '[' and (last line) == ']'
         section := initial tail line
       else if contains line, '='
         if !section
           parse-error!
-        apply set-value, (split config[section])
+        apply (set-value section), (split '=' line)
       else if line
-        parse-error!
+        parse-error!), lines
+
 
     config
 
@@ -49,8 +49,17 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location) ->
       lines.push '[' + section + ']'
       for value, key in values
         lines.push key + '=' + value
-    write LC-game-location.config-path!, (join '\n', lines)  
+    write LC-game-location.config-path!, (join '\n', lines)
+
+  find-section = (key) ->
+    sections-and-keys = obj-to-pairs supported-settings
+    in-section = (pair) -> key in pair[1]
+    (find in-section, sections-and-keys)[0]
+
+  get-setting = (key) ->
+    config[find-section key][key]
 
   {
     supported-settings: supported-settings
+    get: get-setting
   }
