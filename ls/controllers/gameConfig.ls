@@ -1,25 +1,29 @@
-angular.module \lolconf .controller \ConfigCtrl, !($scope, LC-game-config) -> 
+angular.module \lolconf .controller \GameConfigCtrl, !($scope, LC-game-config) -> 
   settings = {
+    "Video":  [
+      {type: \resolution, width-key: 'General.Width', height-key: 'General.Height', label: 'Resolution'}
+      {type: \toggle, key: 'General.WaitForVerticalSync', label: 'Vertical sync'}
+    ],
     "Floating text": [
-      {key: "Absorbed_Enabled", type: \toggle}
-      {key: "OMW_Enabled", type: \toggle}
-      {key: "SpellDamage_Enabled", type: \toggle}
-      {key: "Damage2_Enabled", type: \toggle}
-      {key: "Heal2_Enabled", type: \toggle}
-      {key: "Critical2_Enabled", type: \toggle}
-      {key: "Experience2_Enabled", type: \toggle}
-      {key: "QuestReceived_Enabled", type: \toggle}
-      {key: "QuestComplete_Enabled", type: \toggle}
-      {key: "Score_Enabled", type: \toggle}
-      {key: "Critical_Enabled", type: \toggle}
-      {key: "EnemyCritical_Enabled", type: \toggle}
-      {key: "LegacyCritical_Enabled", type: \toggle}
-      {key: "Legacy_Enabled", type: \toggle}
-      {key: "Debug_Enabled", type: \toggle}
+      {type: \toggle, key: 'FloatingText.Absorbed_Enabled', label: 'Absorption'}
+      {type: \toggle, key: 'FloatingText.OMW_Enabled', label: 'OMW'}
+      {type: \toggle, key: 'FloatingText.SpellDamage_Enabled', label: 'Spell damage'}
+      {type: \toggle, key: 'FloatingText.Damage2_Enabled', label: 'Damage 2'}
+      {type: \toggle, key: 'FloatingText.Heal2_Enabled', label: 'Heal 2'}
+      {type: \toggle, key: 'FloatingText.Critical2_Enabled', label: 'Critical 2'}
+      {type: \toggle, key: 'FloatingText.Experience2_Enabled', label: 'XP 2'}
+      {type: \toggle, key: 'FloatingText.QuestReceived_Enabled', label: 'Quest received'}
+      {type: \toggle, key: 'FloatingText.QuestComplete_Enabled', label: 'Quest complete'}
+      {type: \toggle, key: 'FloatingText.Score_Enabled', label: 'Score'}
+      {type: \toggle, key: 'FloatingText.Critical_Enabled', label: 'Critical'}
+      {type: \toggle, key: 'FloatingText.EnemyCritical_Enabled', label: 'Enemy critical'}
+      {type: \toggle, key: 'FloatingText.LegacyCritical_Enabled', label: 'Legacy crit'}
+      {type: \toggle, key: 'FloatingText.Legacy_Enabled', label: 'Legacy'}
+      {type: \toggle, key: 'FloatingText.Debug_Enabled', label: 'Debug'}
     ],
     "UI": [
-      {key: "EnableHUDAnimations", type: \toggle}
+      {key: 'Performance.EnableHUDAnimations', type: \toggle, label: 'HUD animations'}
     ]
   }
 
-  $scope.settings = settings[0]
+  $scope.settings = settings["Video"]

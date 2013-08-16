@@ -1,0 +1,6 @@
+div.game-config(ng-controller='GameConfigCtrl')
+  ul
+    li(ng-repeat='setting in settings')
+      span.label {{setting.label}}
+      span.item(lc-config-editor='setting')
+        
