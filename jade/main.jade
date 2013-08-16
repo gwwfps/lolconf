@@ -8,6 +8,12 @@ html(lang='en', ng-app='lolconf')
     script(type='text/javascript', src='bower_components/angular-unstable/angular.js')
     script(type='text/javascript', src='app.js')
   body
+    .nav-menu
+      ul
+        li
+          a(href='#gameConfig') Game settings
+        li
+          a(href='#appConfig') App settings
     .main-container(ng-view)
     .modal-overlay
     .modal-content
