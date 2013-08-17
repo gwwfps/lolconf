@@ -19,5 +19,6 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
 angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
     scope.value = (LC-game-config.get scope.setting.width-key) + 'x' + (LC-game-config.get scope.setting.height-key)
-    element.html '<input type="text" ng-model="value" />'
+    scope.resolutions = [scope.value]
+    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions" lc-selectize></select>'
     ($compile element.contents!) scope
