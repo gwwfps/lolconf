@@ -3,18 +3,22 @@
 @import 'includes/modal'
 @import 'includes/fonts'
 @import 'includes/button'
+@import 'includes/tab'
+
+html *
+  cursor default
 
 body
   font-family "Source Sans"
   background clouds
   color midnight-blue
-  margin 0
+  margin 0  
 
 .nav-menu, .main-container
   display inline-block
 
 .nav-menu
-  width 15%
+  width 20%
   position fixed
   top 0
   left 0
@@ -26,6 +30,7 @@ body
     padding 0
     li
       a
+        font-size 20px
         padding 0.5em 1em
         display block
         color white
@@ -39,4 +44,4 @@ body
   position absolute
   right 0
   top 0
-  width 85%
+  width 80%
