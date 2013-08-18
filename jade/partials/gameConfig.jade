@@ -4,8 +4,9 @@ div.game-config(ng-controller='GameConfigCtrl')
       li(ng-repeat='(section, _) in settings.sections')
         span(ng-click='settings.current=section') {{section}}
 
-  ul
-    li(ng-repeat='setting in settings.sections[settings.current]')
-      span.label {{setting.label}}
-      span.item(lc-config-editor='setting')
+  .settings
+    ul
+      li(ng-repeat='setting in settings.sections[settings.current]')
+        span.setting-label {{setting.label}}
+        span.setting-control(lc-config-editor='setting')
         
