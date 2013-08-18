@@ -1,7 +1,7 @@
 div.game-config(ng-controller='GameConfigCtrl')
   .tabs
     ul
-      li(ng-repeat='(section, _) in settings.sections')
+      li(ng-repeat='(section, _) in settings.sections', ng-class='{active: section === settings.current}')
         span(ng-click='settings.current=section') {{section}}
 
   .settings
