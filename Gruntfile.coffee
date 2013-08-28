@@ -17,6 +17,10 @@ module.exports = (grunt) ->
           src: _.union ['package.json', 'fonts/*', 'bower_components/**'], nwModules
           dest: '<%= outputDir %>/'
         ]        
+      probe:
+        files: [
+          '<%= outputDir %>/lolconf-probe.exe':  path.join process.env.GOPATH, 'bin', 'lolconf-probe.exe'
+        ]
 
     lsc: 
       app:
@@ -47,6 +51,12 @@ module.exports = (grunt) ->
         files:
           '<%= outputDir %>/app.css': ['stylus/app.styl']
 
+    shell:
+      probe:
+        command: 'go get github.com/gwwfps/lolconf-probe'
+        options:
+          stdout: true
+
     watch:
       ls:
         files: 'ls/**/*.ls'
@@ -65,12 +75,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-lsc'
+  grunt.loadNpmTasks 'grunt-shell'
 
   grunt.registerTask 'default', [
-    'init', 'clean', 'copy', 'debug'
+    'init', 'clean', 'shell', 'copy', 'debug'
     'lsc', 'jade', 'stylus'
     'watch'
   ]
+
   grunt.registerTask 'init', () ->
     grunt.file.mkdir grunt.config('outputDir')
 
