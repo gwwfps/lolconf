@@ -1,4 +1,4 @@
-angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location) ->   
+angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-probe) ->   
   {defer} = require 'lodash'
 
   if !LC-game-location.get!
