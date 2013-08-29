@@ -27,8 +27,7 @@
     "request": "~2.21.0",
     "nconf": "~0.6.7",
     "windows": "0.0.6",
-    "prelude-ls": "~1.0.3",
-    "edge": "~0.7.12"
+    "prelude-ls": "~1.0.3"
   },
   "main": "main.html#/",
   "window": {
