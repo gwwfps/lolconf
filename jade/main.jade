@@ -10,12 +10,10 @@ html(lang='en', ng-app='lolconf')
     script(type='text/javascript', src='bower_components/selectize/selectize.js')
     script(type='text/javascript', src='app.js')
   body
-    .nav-menu
+    .nav-menu(ng-controller='SidebarCtrl')
       ul
-        li
-          a(href='#gameConfig') Game settings
-        li
-          a(href='#appConfig') App settings
+        li(ng-repeat='section in sections')
+          a(ng-href='\#{{section.page}}') {{section.title}}
     .main-container(ng-view)
     .modal-overlay
     .modal-content
