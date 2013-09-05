@@ -1,0 +1,4 @@
+.tabs
+  ul
+    li(ng-repeat='tab in tabs.names', ng-class='{active: tab === tabs.current}')
+      span(ng-click='tabs.current=tab') {{tab}}
