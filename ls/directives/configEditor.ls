@@ -1,5 +1,5 @@
 angular.module \lolconf .directive \lcConfigEditor, ($compile) ->
-  scope: true,
+  scope: true
   link: !(scope, element, attrs) ->
     scope.setting = scope.$eval attrs.lc-config-editor
     html = '<span lc-config-editor-' + scope.setting.type + '></span>'
