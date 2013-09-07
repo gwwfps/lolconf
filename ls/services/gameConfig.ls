@@ -4,7 +4,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location, LC-logger) ->
     write: fs.write-file-sync
   }
   {first, last, tail, initial, split, each, join, apply, obj-to-pairs, find} = require 'prelude-ls'
-  {clone-deep, contains} = require 'lodash'
+  {clone-deep, contains, has} = require 'lodash'
 
   parse-error = ->
     throw new Error 'Error parsing game configuration file.'
@@ -44,11 +44,13 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location, LC-logger) ->
     write LC-game-location.config-path!, (join '\n', lines)
 
   get-setting = (key) ->
-    [section, real-key] = split '.', key
-    config[section][real-key]
+    [section, real-key] = split '.', key    
+    if has config, section then config[section][real-key] else undefined
 
   set-setting = !(key, value) ->
     [section, real-key] = split '.', key
+    if !(has config, section)
+      config[section] = {}
     config[section][real-key] = value
     write-to-file!
 

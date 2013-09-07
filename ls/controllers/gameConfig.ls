@@ -10,7 +10,8 @@ angular.module \lolconf .controller \GameConfigCtrl !($scope, LC-game-config) ->
       {type: \graphics key: 'Performance.EffectsQuality' label: "Effect quality"}
       {type: \graphics key: 'Performance.EnvironmentQuality' label: "Environment quality"}
       {type: \graphics key: 'Performance.ShadowQuality' label: "Shadow quality"}
-      {type: \fps-cap key: 'Performance.FrameCapType' label: 'Framerate cap'}
+      {type: \fps-cap key: 'Performance.FrameCapType' label: "Framerate cap"}
+      {type: \toggle key: 'UnitRenderStyle.Inking' label: "Unit inking"}
     ]
     "UI & Colors": [
       {type: \toggle key: 'HUD.EnableLineMissileVis' label: "Line missile display"}
