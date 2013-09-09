@@ -45,7 +45,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-location, LC-logger) ->
 
   get-setting = (key) ->
     [section, real-key] = split '.', key    
-    if has config, section then config[section][real-key] else undefined
+    if has config, section then config[section][real-key] else void
 
   set-setting = !(key, value) ->
     [section, real-key] = split '.', key

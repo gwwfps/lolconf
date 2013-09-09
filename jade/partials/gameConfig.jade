@@ -3,7 +3,7 @@ div.game-config(ng-controller='GameConfigCtrl')
 
   .settings
     ul
-      li(ng-repeat='setting in settings[tabs.current]')
+      li(ng-repeat='setting in currentSection().settings')
         span.setting-label {{setting.label}}
         span.setting-control(lc-config-editor='setting')
         
