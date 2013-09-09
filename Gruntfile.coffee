@@ -14,7 +14,7 @@ module.exports = (grunt) ->
       main:
         files: [
           expand: true
-          src: _.union ['package.json', 'fonts/*', 'bower_components/**'], nwModules
+          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*'], nwModules
           dest: '<%= outputDir %>/'
         ]        
       probe:
