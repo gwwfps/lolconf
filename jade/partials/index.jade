@@ -1,7 +1,7 @@
 div(ng-controller="IndexCtrl")
-  ul
-    li
-      a.button(href="#gameConfig") Game settings
+  .news
+    div(ng-repeat="article in officialNews")
+      h4 {{ article.title }}
 
   div(lc-modal="choose-location")
     p Before everything, please specify the location of your game directory.

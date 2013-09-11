@@ -1,5 +1,7 @@
-angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-probe) ->   
+angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-probe, LC-official-news) ->   
   {defer} = require 'lodash'
+
+  $scope.official-news = LC-official-news.list!
 
   if !LC-game-location.get!
     defer !->
