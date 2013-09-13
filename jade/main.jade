@@ -1,7 +1,7 @@
 doctype 5
 html(lang='en', ng-app='lolconf')
   head
-    title LoLConf
+    title {{'APP_TITLE'|t}}
     link(href='bower_components/font-awesome/build/assets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='bower_components/selectize/selectize.css', rel='stylesheet')
     link(href='app.css', rel='stylesheet')
@@ -9,6 +9,7 @@ html(lang='en', ng-app='lolconf')
     script(type='text/javascript', src='bower_components/angular/angular.js')
     script(type='text/javascript', src='bower_components/angular-route/angular-route.js')
     script(type='text/javascript', src='bower_components/angular-animate/angular-animate.js')
+    script(type='text/javascript', src='bower_components/angular-translate/angular-translate.js')
     script(type='text/javascript', src='bower_components/selectize/selectize.js')
     script(type='text/javascript', src='app.js')
   body
