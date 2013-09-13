@@ -20,6 +20,7 @@ angular.module \lolconf, [\ngRoute \ngAnimate \pascalprecht.translate] .config !
     $translateProvider.translations lang, messages
 
   $translate-provider.fallback-language init-data.default-language
+  $translate-provider.preferred-language init-data.default-language
 
   $route-provider.when '/:partialName',
     template-url: (params) -> "partials/#{params.partial-name || 'index'}.html"
