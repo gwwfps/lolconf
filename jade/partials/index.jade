@@ -4,7 +4,7 @@ div(ng-controller="IndexCtrl")
       h4 {{ article.title }}
 
   div(lc-modal="choose-location")
-    p Before everything, please specify the location of your game directory.
+    p {{'INSTRUCTION_GAME_LOCATION'|t}}
     p
       input(ng-model="gameLocation")
-    button(ng-click="confirmLocation()") Confirm
+    button(ng-click="confirmLocation()") {{'BUTTON_CONFIRM'|t}}

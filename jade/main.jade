@@ -16,7 +16,7 @@ html(lang='en', ng-app='lolconf')
     .nav-menu(ng-controller='SidebarCtrl')
       ul
         li(ng-repeat='section in sections')
-          a(ng-href='\#{{section.page}}') {{section.title}}
+          a(ng-href='\#{{section.page}}') {{section.titleKey|t}}
     .main-container(ng-view)
     .modal-overlay
     .modal-content

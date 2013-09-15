@@ -1,1 +1,10 @@
 APP_TITLE: LoLConf
+
+INSTRUCTION_GAME_LOCATION: Before we start, please specify the location of your game directory.
+BUTTON_CONFIRM: Confirm
+
+SIDEBAR_INDEX: Welcome
+SIDEBAR_GAME_CONFIG: Game settings
+SIDEBAR_KEYBINDS: Key bindings
+SIDEBAR_LATENCY: Latency tester
+SIDEBAR_APP_CONFIG: App settings
