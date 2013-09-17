@@ -4,110 +4,110 @@ sections:
     - type: resolution
       widthKey: General.Width
       heightKey: General.Height
-      label: Resolution
+      labelKey: GAMECONFIG_RESOLUTION
     - type: window-mode
       key: General.WindowMode
-      label: Screen mode
+      labelKey: GAMECONFIG_SCREEN_MODE
     - type: toggle
       key: General.WaitForVerticalSync
-      label: Vertical sync
+      labelKey: GAMECONFIG_VSYNC
     - type: graphics
       key: Performance.CharacterQuality
-      label: Character quality
+      labelKey: GAMECONFIG_CHAR_QUAL
     - type: graphics
       key: Performance.EffectsQuality
-      label: Effect quality
+      labelKey: GAMECONFIG_EFFECT_QUAL
     - type: graphics
       key: Performance.EnvironmentQuality
-      label: Environment quality
+      labelKey: GAMECONFIG_ENV_QUAL
     - type: graphics
       key: Performance.ShadowQuality
-      label: Shadow quality
+      labelKey: GAMECONFIG_SHADOW_QUAL
     - type: fps-cap
       key: Performance.FrameCapType
-      label: Framerate cap
+      labelKey: GAMECONFIG_FPS_CAP
     - type: toggle
       key: UnitRenderStyle.Inking
-      label: Unit inking
+      labelKey: GAMECONFIG_UNIT_INKING
   - title: UI & Colors
     settings:
     - type: toggle
       key: HUD.EnableLineMissileVis
-      label: Line missile display
+      labelKey: GAMECONFIG_LINE_MISSLE
     - type: toggle
       key: HUD.LockCamera
-      label: Lock camera
+      labelKey: GAMECONFIG_LOCK_CAMERA
     - type: toggle
       key: Performance.EnableHUDAnimations
-      label: HUD animations
+      labelKey: GAMECONFIG_HUD_ANIM
     - type: toggle
       key: HUD.FlipMiniMap
-      label: Minimap on the left
+      labelKey: GAMECONFIG_MINIMAP_LEFT
     - type: color-palette
       key: ColorPalette.ColorPalette
-      label: Color mode
+      labelKey: GAMECONFIG_COLOR
     - type: toggle
       key: HUD.ShowAllChannelChat
-      label: Show [All] chat
+      labelKey: GAMECONFIG_ALL_CHAT
   - title: Controls
   - title: Sound
     settings:
     - type: volume
       key: Volume.MasterVolume
-      label: Master voulme
+      labelKey: GAMECONFIG_MASTER_VOL
     - type: volume
       key: Volume.AnnouncerVolume
-      label: Announcer voulme
+      labelKey: GAMECONFIG_ANNOUNCER_VOL
     - type: volume
       key: Volume.VoiceVolume
-      label: Voice voulme
+      labelKey: GAMECONFIG_VO_VOL
     - type: volume
       key: Volume.MusicVolume
-      label: Music voulme
+      labelKey: GAMECONFIG_MUSIC_VOL
   - title: Floating Texts
     settings:
     - type: toggle
       key: FloatingText.Absorbed_Enabled
-      label: Absorption
+      labelKey: GAMECONFIG_FT_ABSORPTION
     - type: toggle
       key: FloatingText.OMW_Enabled
-      label: OMW
+      labelKey: GAMECONFIG_FT_OMW
     - type: toggle
       key: FloatingText.SpellDamage_Enabled
-      label: Spell damage
+      labelKey: GAMECONFIG_FT_SPDMG
     - type: toggle
       key: FloatingText.Damage2_Enabled
-      label: Damage 2
+      labelKey: GAMECONFIG_FT_DMG2
     - type: toggle
       key: FloatingText.Heal2_Enabled
-      label: Heal 2
+      labelKey: GAMECONFIG_FT_HEAL2
     - type: toggle
       key: FloatingText.Critical2_Enabled
-      label: Critical 2
+      labelKey: GAMECONFIG_FT_CRIT2
     - type: toggle
       key: FloatingText.Experience2_Enabled
-      label: XP 2
+      labelKey: GAMECONFIG_FT_XP2
     - type: toggle
       key: FloatingText.QuestReceived_Enabled
-      label: Quest received
+      labelKey: GAMECONFIG_FT_QREC
     - type: toggle
       key: FloatingText.QuestComplete_Enabled
-      label: Quest complete
+      labelKey: GAMECONFIG_FT_QCOM
     - type: toggle
       key: FloatingText.Score_Enabled
-      label: Score
+      labelKey: GAMECONFIG_FT_SCREO
     - type: toggle
       key: FloatingText.Critical_Enabled
-      label: Critical
+      labelKey: GAMECONFIG_FT_CRIT
     - type: toggle
       key: FloatingText.EnemyCritical_Enabled
-      label: Enemy critical
+      labelKey: GAMECONFIG_FT_ENEMY_CRIT
     - type: toggle
       key: FloatingText.LegacyCritical_Enabled
-      label: Legacy-style crits
+      labelKey: GAMECONFIG_FT_LEGACY_CRIT
     - type: toggle
       key: FloatingText.Legacy_Enabled
-      label: Legacy-style damage
+      labelKey: GAMECONFIG_FT_LEGACY_DMG
     - type: toggle
       key: FloatingText.Debug_Enabled
-      label: Debug
+      labelKey: GAMECONFIG_FT_DEBUG
