@@ -1,19 +1,16 @@
 angular.module \lolconf .factory \LCProbe, ($q, LC-logger) ->
-  {spawn} = require 'child_process'
+  {exec-file} = require 'child_process'
   {once} = require 'lodash'
   require! 'readline'
 
-  probe-process = spawn 'lolconf-probe.exe', [], {stdio: \pipe}
-
-  process.on \exit, ->
-    probe-process.kill!
+  probe-process = exec-file 'lolconf-probe.exe', []
 
   rl = readline.createInterface {
     input: probe-process.stdout
     output: probe-process.stdin
   }
 
-  rl.on \line, (line) ->    
+  rl.on \line, (line) ->
     LC-logger.info "Received data from probe process.", line
 
   {
@@ -28,7 +25,7 @@ angular.module \lolconf .factory \LCProbe, ($q, LC-logger) ->
           deferred.resolve message
       ) 
 
-      rl.write command
+      probe-process.stdin.write command
 
       deferred.promise
   }
