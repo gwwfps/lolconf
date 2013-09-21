@@ -16,9 +16,14 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
     scope.$watch 'value', (new-value) ->
       LC-game-config.set scope.setting.key, if new-value is true then '1' else '0'
 
-angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config) -> 
+angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config, LC-probe) -> 
   link: !(scope, element, attrs) ->
+    {map} = require 'lodash'
+
     scope.value = (LC-game-config.get scope.setting.width-key) + 'x' + (LC-game-config.get scope.setting.height-key)
-    scope.resolutions = [scope.value]
-    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions" lc-selectize></select>'
+    LC-probe.query 'resolutions' .then (result) ->
+      scope.resolutions = map result.resolutions, (resolution) ->
+        resolution.width + 'x' + resolution.height
+    # scope.resolutions = [scope.value]
+    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions"></select>' #  lc-selectize
     ($compile element.contents!) scope
