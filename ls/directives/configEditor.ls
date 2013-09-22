@@ -18,12 +18,17 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
 
 angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config, LC-probe) -> 
   link: !(scope, element, attrs) ->
-    {map} = require 'lodash'
+    {map, defer} = require 'lodash'
+
+    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions" lc-selectize></select>' 
+    
+    select = element.find 'select'
 
     scope.value = (LC-game-config.get scope.setting.width-key) + 'x' + (LC-game-config.get scope.setting.height-key)
-    LC-probe.query 'resolutions' .then (result) ->
+    LC-probe.query \resolutions .then (result) ->
       scope.resolutions = map result.resolutions, (resolution) ->
         resolution.width + 'x' + resolution.height
+      ($compile element.contents!) scope
     # scope.resolutions = [scope.value]
-    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions"></select>' #  lc-selectize
-    ($compile element.contents!) scope
+        
+    
