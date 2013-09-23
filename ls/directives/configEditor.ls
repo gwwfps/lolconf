@@ -18,17 +18,34 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
 
 angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config, LC-probe) -> 
   link: !(scope, element, attrs) ->
-    {map, defer} = require 'lodash'
+    {map, zip, zip-object} = require 'lodash'
 
-    element.html '<select ng-model="value" ng-options="resolution for resolution in resolutions" lc-selectize></select>' 
+    element.html '<select ng-model="value" ng-options="label for (label, resolution) in resolutions" lc-selectize></select>' 
     
     select = element.find 'select'
 
-    scope.value = (LC-game-config.get scope.setting.width-key) + 'x' + (LC-game-config.get scope.setting.height-key)
+    saved-value = {
+      width: LC-game-config.get scope.setting.width-key
+      height: LC-game-config.get scope.setting.height-key
+    }
+
+    resolution-to-label = (resolution) ->
+      resolution.width + 'x' + resolution.height
+
     LC-probe.query \resolutions .then (result) ->
-      scope.resolutions = map result.resolutions, (resolution) ->
-        resolution.width + 'x' + resolution.height
+      scope.resolutions = zip-object.apply null, (zip.apply null, (map result.resolutions, (resolution) ->
+        [(resolution-to-label resolution), resolution]
+      ))
+
+      saved-label = resolution-to-label saved-value
+      if !(saved-label of scope.resolutions)
+        scope.resolutions[saved-label] = saved-value
+      scope.value = scope.resolutions[saved-label]
+      
       ($compile element.contents!) scope
-    # scope.resolutions = [scope.value]
+
+      scope.$watch 'value', (new-value) ->
+        LC-game-config.set scope.setting.width-key, new-value.width
+        LC-game-config.set scope.setting.height-key, new-value.height
         
     
