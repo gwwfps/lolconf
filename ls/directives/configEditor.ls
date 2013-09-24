@@ -48,4 +48,21 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
         LC-game-config.set scope.setting.width-key, new-value.width
         LC-game-config.set scope.setting.height-key, new-value.height
         
+angular.module \lolconf .directive \lcConfigEditorGraphics, ($compile, LC-game-config) ->
+  link: !(scope, element, attrs) ->
+    {map, reduce} = require 'lodash'
+
+    rank-keys = [\GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST]
+    element.html (reduce (map rank-keys, (key) ->
+      '<span>{{"' + key + '"|t}}</span>'
+    ), (result, rank-control) ->
+      result + rank-control
+    )    
+
+    ($compile element.contents!) scope
+
+    scope.$watch 'value', (new-value) ->
+      rank-controls = element.find 'span'
+      rank-controls.remove-class 'active'
+      rank-controls[parse-int new-value].add-class 'active'
     
