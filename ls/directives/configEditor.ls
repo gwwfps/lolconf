@@ -53,16 +53,19 @@ angular.module \lolconf .directive \lcConfigEditorGraphics, ($compile, LC-game-c
     {map, reduce} = require 'lodash'
 
     rank-keys = [\GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST]
-    element.html (reduce (map rank-keys, (key) ->
-      '<span>{{"' + key + '"|t}}</span>'
+
+    inner = angular.element '<div class="ui buttons"></div>'
+    inner.html (reduce (map rank-keys, (key) ->
+      '<div class="ui mini button">{{"' + key + '"|t}}</div>'
     ), (result, rank-control) ->
       result + rank-control
-    )    
+    )
+    element.append inner
 
-    ($compile element.contents!) scope
+    ($compile inner) scope
 
-    scope.$watch 'value', (new-value) ->
-      rank-controls = element.find 'span'
-      rank-controls.remove-class 'active'
-      rank-controls[parse-int new-value].add-class 'active'
+    # scope.$watch 'value', (new-value) ->
+    #   rank-controls = element.find 'span'
+    #   rank-controls.remove-class 'active'
+    #   rank-controls[parse-int new-value].add-class 'active'
     
