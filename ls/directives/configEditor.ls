@@ -50,22 +50,18 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
         
 angular.module \lolconf .directive \lcConfigEditorGraphics, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
-    {map, reduce} = require 'lodash'
+    {each} = require 'lodash'
+
+    scope.value = LC-game-config.get scope.setting.key
 
     rank-keys = [\GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST]
 
     inner = angular.element '<div class="ui buttons"></div>'
-    inner.html (reduce (map rank-keys, (key) ->
-      '<div class="ui mini button">{{"' + key + '"|t}}</div>'
-    ), (result, rank-control) ->
-      result + rank-control
-    )
+    each rank-keys, (key, i) ->
+      inner.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
     element.append inner
 
     ($compile inner) scope
 
-    # scope.$watch 'value', (new-value) ->
-    #   rank-controls = element.find 'span'
-    #   rank-controls.remove-class 'active'
-    #   rank-controls[parse-int new-value].add-class 'active'
-    
+    scope.$watch 'value', (new-value) ->      
+      LC-game-config.set scope.setting.key, new-value
