@@ -10,8 +10,12 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile) ->
 angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
     scope.value = (LC-game-config.get scope.setting.key) === '1'
-    element.html '<input type="checkbox" ng-model="value" />'
+    element.html '<div class="ui toggle checkbox"><input type="checkbox" ng-model="value" /><label></label></div>'
     ($compile element.contents!) scope
+
+    checkbox = element.find 'input'
+    element.find '.checkbox' .on \click, ->
+      checkbox.trigger \click
 
     scope.$watch 'value', (new-value) ->
       LC-game-config.set scope.setting.key, if new-value is true then '1' else '0'
