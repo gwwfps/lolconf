@@ -69,3 +69,12 @@ angular.module \lolconf .directive \lcConfigEditorGraphics, ($compile, LC-game-c
 
     scope.$watch 'value', (new-value) ->      
       LC-game-config.set scope.setting.key, new-value
+
+angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
+  link: !(scope, element, attrs) ->
+    scope.value = LC-game-config.get scope.setting.key
+    element.html '<input type="range" ng-model="value" min="0" max="1" step="0.01" />'
+    ($compile element.contents!) scope
+
+    scope.$watch 'value', (new-value) ->
+      LC-game-config.set scope.setting.key, new-value
