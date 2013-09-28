@@ -78,6 +78,10 @@ angular.module \lolconf .directive \lcConfigEditorFpsCap, rank-directive [
   \GAMECONFIG_FPS_CAP_25 \GAMECONFIG_FPS_CAP_30 \GAMECONFIG_FPS_CAP_60 \GAMECONFIG_FPS_CAP_80
 ]
 
+angular.module \lolconf .directive \lcConfigEditorWindowMode, rank-directive [
+  \GAMECONFIG_WINDOW_MODE_FULL \GAMECONFIG_WINDOW_MODE_WINDOWED \GAMECONFIG_WINDOW_MODE_BORDERLESS
+]
+
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
     scope.value = LC-game-config.get scope.setting.key
