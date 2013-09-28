@@ -51,24 +51,31 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
       scope.$watch 'value', (new-value) ->
         LC-game-config.set scope.setting.width-key, new-value.width
         LC-game-config.set scope.setting.height-key, new-value.height
+
+rank-directive = (rank-keys) ->
+   ($compile, LC-game-config) ->
+    link: !(scope, element, attrs) ->
+      {each} = require 'lodash'
+
+      scope.value = LC-game-config.get scope.setting.key    
+
+      inner = angular.element '<div class="ui buttons"></div>'
+      each rank-keys, (key, i) ->
+        inner.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
+      element.append inner
+
+      ($compile inner) scope
+
+      scope.$watch 'value', (new-value) ->      
+        LC-game-config.set scope.setting.key, new-value
         
-angular.module \lolconf .directive \lcConfigEditorGraphics, ($compile, LC-game-config) ->
-  link: !(scope, element, attrs) ->
-    {each} = require 'lodash'
+angular.module \lolconf .directive \lcConfigEditorGraphics, rank-directive [
+  \GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST
+]
 
-    scope.value = LC-game-config.get scope.setting.key
-
-    rank-keys = [\GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST]
-
-    inner = angular.element '<div class="ui buttons"></div>'
-    each rank-keys, (key, i) ->
-      inner.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
-    element.append inner
-
-    ($compile inner) scope
-
-    scope.$watch 'value', (new-value) ->      
-      LC-game-config.set scope.setting.key, new-value
+angular.module \lolconf .directive \lcConfigEditorFpsCap, rank-directive [
+  \GAMECONFIG_FPS_CAP_STABLE \GAMECONFIG_FPS_CAP_HIGH \GAMECONFIG_FPS_CAP_BENCHMARK
+]
 
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
