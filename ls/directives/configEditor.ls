@@ -53,7 +53,7 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
         LC-game-config.set scope.setting.height-key, new-value.height
 
 rank-directive = (rank-keys) ->
-   ($compile, LC-game-config) ->
+  ($compile, LC-game-config) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
 
@@ -75,6 +75,7 @@ angular.module \lolconf .directive \lcConfigEditorGraphics, rank-directive [
 
 angular.module \lolconf .directive \lcConfigEditorFpsCap, rank-directive [
   \GAMECONFIG_FPS_CAP_STABLE \GAMECONFIG_FPS_CAP_HIGH \GAMECONFIG_FPS_CAP_BENCHMARK
+  \GAMECONFIG_FPS_CAP_25 \GAMECONFIG_FPS_CAP_30 \GAMECONFIG_FPS_CAP_60 \GAMECONFIG_FPS_CAP_80
 ]
 
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
