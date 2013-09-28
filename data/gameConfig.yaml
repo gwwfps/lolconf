@@ -49,6 +49,9 @@ sections:
     - type: toggle
       key: HUD.ShowAllChannelChat
       labelKey: GAMECONFIG_ALL_CHAT
+    - type: cooldown-mode
+      key: HUD.NumericCooldownFormat
+      labelKey: GAMECONFIG_COOLDOWN_FORMAT
   - title: Controls
   - title: Sound
     settings:

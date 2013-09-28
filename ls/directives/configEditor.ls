@@ -82,6 +82,10 @@ angular.module \lolconf .directive \lcConfigEditorWindowMode, rank-directive [
   \GAMECONFIG_WINDOW_MODE_FULL \GAMECONFIG_WINDOW_MODE_WINDOWED \GAMECONFIG_WINDOW_MODE_BORDERLESS
 ]
 
+angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
+  \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
+]
+
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
     scope.value = LC-game-config.get scope.setting.key
