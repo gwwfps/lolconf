@@ -24,7 +24,7 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
   link: !(scope, element, attrs) ->
     {map, zip, zip-object} = require 'lodash'
 
-    element.html '<select ng-model="value" ng-options="label for (label, resolution) in resolutions" lc-selectize></select>' 
+    element.html '<select ng-model="value" ng-options="label for (label, resolution) in resolutions"></select>' 
     
     select = element.find 'select'
 
