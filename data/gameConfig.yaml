@@ -52,7 +52,7 @@ sections:
     - type: cooldown-mode
       key: HUD.NumericCooldownFormat
       labelKey: GAMECONFIG_COOLDOWN_FORMAT
-  - title: Controls
+  # - title: Controls
   - title: Sound
     settings:
     - type: volume
