@@ -19,7 +19,8 @@
     "stylus": "~0.36.0",
     "nib": "~0.9.1",
     "grunt-contrib-watch": "~0.5.1",
-    "grunt-shell": "~0.3.1"
+    "grunt-shell": "~0.3.1",
+    "grunt-contrib-compress": "~0.5.2"
   },
   "dependencies": {
     "lodash": "~1.2.1",

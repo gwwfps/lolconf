@@ -10,6 +10,18 @@ module.exports = (grunt) ->
 
     clean: ['<%= outputDir %>']
 
+    compress:
+      nw:
+        files: [
+          src: ['**/*']
+          dest: ''
+          cwd: 'build/'
+          expand: true
+        ]          
+        options:
+          archive: 'lolconf.nw'
+          mode: 'zip'
+
     copy:      
       main:
         files: [
@@ -70,6 +82,7 @@ module.exports = (grunt) ->
 
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
@@ -78,9 +91,16 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-shell'
 
   grunt.registerTask 'default', [
-    'init', 'clean', 'shell', 'copy', 'debug'
+    'build', 'debug', 'watch'
+  ]
+
+  grunt.registerTask 'build', [
+    'init', 'clean', 'shell', 'copy'
     'lsc', 'jade', 'stylus'
-    'watch'
+  ]
+
+  grunt.registerTask 'build:nw', [
+    'build', 'compress'
   ]
 
   grunt.registerTask 'init', () ->
