@@ -9,6 +9,8 @@ lib-cov
 *.lnk
 *.bat
 *.nw
+lolconf.exe
+nw.exe
 
 pids
 logs

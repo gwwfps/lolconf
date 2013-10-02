@@ -68,6 +68,8 @@ module.exports = (grunt) ->
         command: 'go get github.com/gwwfps/lolconf-probe'
         options:
           stdout: true
+      pack:
+        command: 'copy /b nw.exe+lolconf.nw lolconf.exe'
 
     watch:
       ls:
@@ -95,13 +97,13 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'build', [
-    'init', 'clean', 'shell', 'copy'
+    'init', 'clean', 'shell:probe', 'copy'
     'lsc', 'jade', 'stylus'
   ]
 
   grunt.registerTask 'build:nw', [
-    'build', 'compress'
-  ]
+    'build', 'compress', 'shell:pack'
+  ]  
 
   grunt.registerTask 'init', () ->
     grunt.file.mkdir grunt.config('outputDir')
