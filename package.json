@@ -33,9 +33,9 @@
   "main": "main.html#/",
   "window": {
     "toolbar": false,
-    "frame": true,
-    "width": 850,
-    "height": 500,
+    "frame": false,
+    "width": 1171,
+    "height": 854,
     "resizable": false
   }
 }

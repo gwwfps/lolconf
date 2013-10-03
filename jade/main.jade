@@ -14,6 +14,8 @@ html(lang='en', ng-app='lolconf')
     script(type='text/javascript', src='bower_components/selectize/selectize.js')
     script(type='text/javascript', src='app.js')
   body
+    .main-title
+      {{'APP_TITLE'|t}}
     .nav-menu(ng-controller='SidebarCtrl')
       ul
         li(ng-repeat='section in sections')

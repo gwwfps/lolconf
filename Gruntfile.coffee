@@ -26,7 +26,7 @@ module.exports = (grunt) ->
       main:
         files: [
           expand: true
-          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*'], nwModules
+          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*', 'images/*'], nwModules
           dest: '<%= outputDir %>/'
         ]        
       probe:
@@ -112,4 +112,5 @@ module.exports = (grunt) ->
     nwPkgPath = path.join(grunt.config('outputDir'), 'package.json')
     nwPkg = grunt.file.readJSON nwPkgPath
     nwPkg.window.toolbar = true
+    nwPkg.window.height += 34
     grunt.file.write nwPkgPath, JSON.stringify(nwPkg)
