@@ -16,6 +16,7 @@ html(lang='en', ng-app='lolconf')
   body
     .main-title
       {{'APP_TITLE'|t}}
+    .main-close(lc-close)
     .nav-menu(ng-controller='SidebarCtrl')
       ul
         li(ng-repeat='section in sections')

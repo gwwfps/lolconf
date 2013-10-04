@@ -19,20 +19,34 @@ body
 
 .main-title
   height 40px
-  padding 12px 0 15px 0
+  padding 12px 0 15px 70px
   text-align center
   font-size 32px
   color #FDF59C
   text-shadow 0 0 10px rgba(0, 0, 0, 0.5)
   position absolute
   top 0
-  left 0
-  width 100%
+  right 70px
+  left 0  
+  -webkit-app-region drag
+
+.main-close
+  position absolute
+  right 20px
+  top 12px  
+  height 47px
+  width 47px
+  background-image url('images/FoundryOptions_I6.png')
+  background-position -99px -97px
+  &:hover
+    background-position -146px -97px
+  &:active
+    background-position -52px -97px
 
 .main-container 
   position absolute
   right 0
-  top 0
+  top 67px
   width 80%
 
   &.ng-enter
