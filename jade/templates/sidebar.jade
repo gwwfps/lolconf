@@ -1,0 +1,4 @@
+ul
+  li(ng-repeat='section in sections')
+    a(ng-class='{current: selected == section}', ng-click='navigate(section)') {{section.titleKey|t}}
+    
