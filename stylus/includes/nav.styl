@@ -18,7 +18,7 @@
       color rgba(200, 255, 255, 0.8)
       text-decoration none
       text-transform uppercase
-      text-shadow 0 0 2px rgba(255, 255, 255, 0.7)      
+      text-shadow 0 0 1px rgba(255, 255, 255, 0.7)      
       &:hover
         background-image url('images/FoundryOptions_I6.png')
         background-position -207px 0
@@ -29,4 +29,9 @@
         background-image url('images/FoundryOptions_I6.png')
         background-position 0 -49px
         color rgba(255, 255, 255, 0.9)
+      &.disabled
+        text-shadow none
+        color rgba(255, 255, 255, 0.3)
+        &:hover
+          background transparent
           

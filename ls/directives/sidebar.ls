@@ -7,14 +7,15 @@ angular.module \lolconf .directive \lcSidebar, ->
     $scope.sections = [
       {page: '/index', title-key: \SIDEBAR_INDEX}
       {page: '/gameConfig', title-key: \SIDEBAR_GAME_CONFIG}
-      {page: '/keybinds', title-key: \SIDEBAR_KEYBINDS}
+      {page: '/keybinds', title-key: \SIDEBAR_KEYBINDS, disabled: true}
       {page: '/latency', title-key: \SIDEBAR_LATENCY}
-      {page: '/appConfig', title-key: \SIDEBAR_APP_CONFIG}
+      {page: '/appConfig', title-key: \SIDEBAR_APP_CONFIG, disabled: true}
     ]
 
     $scope.selected = find $scope.sections, {page: $location.path!}
                    or $scope.sections[0]
 
     $scope.navigate = !(section) ->
-      $scope.selected = section
-      $location.path section.page
+      if !section.disabled
+        $scope.selected = section
+        $location.path section.page
