@@ -11,18 +11,22 @@
     list-style none
     margin 0
     padding 0
-    li
-      a
-        font-size 20px
-        padding 0.5em 1em
-        display block
-        color white
-        text-decoration none
-        transition background-color .35s
-        text-shadow 0 1px midnight-blue        
-        &:hover
-          background-color belize-hole
-        &.current
-          background-image url('images/FoundryOptions_I6.png')
-          background-position 0 -49px
+    li a
+      font-size 20px
+      padding 0.5em 1em
+      display block
+      color rgba(200, 255, 255, 0.8)
+      text-decoration none
+      text-transform uppercase
+      text-shadow 0 0 2px rgba(255, 255, 255, 0.7)      
+      &:hover
+        background-image url('images/FoundryOptions_I6.png')
+        background-position -207px 0
+      &:active
+        background-image url('images/FoundryOptions_I6.png')
+        background-position -209px -50px
+      &.current
+        background-image url('images/FoundryOptions_I6.png')
+        background-position 0 -49px
+        color rgba(255, 255, 255, 0.9)
           

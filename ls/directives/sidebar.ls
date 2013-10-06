@@ -13,6 +13,7 @@ angular.module \lolconf .directive \lcSidebar, ->
     ]
 
     $scope.selected = find $scope.sections, {page: $location.path!}
+                   or $scope.sections[0]
 
     $scope.navigate = !(section) ->
       $scope.selected = section
