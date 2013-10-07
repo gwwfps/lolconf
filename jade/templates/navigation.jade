@@ -1,0 +1,7 @@
+.sidebar
+  ul
+    li(ng-repeat='section in sections')
+      a(ng-class='{current: selected == section, disabled: section.disabled}', ng-click='navigate(section)') {{section.titleKey|t}}
+.section-header
+  h1 {{selected.titleKey|t}}
+  .header-separator

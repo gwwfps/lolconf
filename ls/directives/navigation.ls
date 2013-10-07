@@ -1,5 +1,5 @@
-angular.module \lolconf .directive \lcSidebar, ->
-  template-url: 'templates/sidebar.html'
+angular.module \lolconf .directive \lcNavigation, ->
+  template-url: 'templates/navigation.html'
   scope: true
   controller: !($scope, $location) ->
     {find} = require 'lodash'

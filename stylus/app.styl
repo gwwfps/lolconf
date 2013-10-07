@@ -1,11 +1,14 @@
 @import 'nib'
+
 @import 'includes/colors'
 @import 'includes/modal'
 @import 'includes/fonts'
 @import 'includes/button'
 @import 'includes/tab'
-@import 'includes/nav'
+@import 'includes/navigation'
+
 @import 'partials/gameConfig'
+
 
 html *
   cursor default
@@ -45,12 +48,14 @@ body
 
 .main-container 
   position absolute
-  right 0
-  top 67px
-  width 80%
+  left 242px
+  top 148px
+  right 22px
+  bottom 66px
+  overflow-y auto  
+  padding 8px 35px 0 28px  
 
   &.ng-enter
-    padding-top 35px
     transition 0.2s all
     opacity 0
     &.ng-enter-active

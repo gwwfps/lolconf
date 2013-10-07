@@ -1,0 +1,51 @@
+.main-navigation
+  .sidebar
+    width 210px
+    position absolute
+    top 94px
+    left 19px
+    height 600px
+    ul
+      list-style none
+      margin 0
+      padding 0
+      li a
+        font-size 20px
+        padding 0.5em 1em
+        display block
+        color options-blue-green
+        text-decoration none
+        text-transform uppercase
+        text-shadow 0 0 1px rgba(255, 255, 255, 0.7)      
+        &:hover
+          background-image url('images/FoundryOptions_I6.png')
+          background-position -207px 0
+        &:active
+          background-image url('images/FoundryOptions_I6.png')
+          background-position -209px -50px
+        &.current
+          background-image url('images/FoundryOptions_I6.png')
+          background-position 0 -49px
+          color rgba(255, 255, 255, 0.9)
+        &.disabled
+          text-shadow none
+          color rgba(255, 255, 255, 0.3)
+          &:hover
+            background transparent
+  .section-header
+    position absolute
+    left 242px
+    top 70px
+    right 35px
+    padding 5px 35px 6px 28px
+    height 61px
+    h1
+      font-size 30px
+      margin 10px 0
+      color options-blue-green
+      font-weight normal
+      text-shadow 0 0 1px rgba(255, 255, 255, 0.7)
+    .header-separator
+      height 4px
+      background-image url('images/FoundryOptions_I1.png')
+      background-position -128px -149px
