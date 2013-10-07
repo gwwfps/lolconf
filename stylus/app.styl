@@ -1,6 +1,7 @@
 @import 'nib'
 
 @import 'includes/colors'
+@import 'includes/sprite'
 @import 'includes/modal'
 @import 'includes/fonts'
 @import 'includes/button'
@@ -39,12 +40,11 @@ body
   top 12px  
   height 47px
   width 47px
-  background-image url('images/FoundryOptions_I6.png')
-  background-position -99px -97px
+  sprite('I6', 99, 97)
   &:hover
-    background-position -146px -97px
+    sprite('I6', 146, 97)
   &:active
-    background-position -52px -97px
+    sprite('I6', 52, 97)
 
 .main-container 
   position absolute

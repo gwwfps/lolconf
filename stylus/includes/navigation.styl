@@ -18,14 +18,11 @@
         text-transform uppercase
         text-shadow 0 0 1px rgba(255, 255, 255, 0.7)      
         &:hover
-          background-image url('images/FoundryOptions_I6.png')
-          background-position -207px 0
+          sprite('I6', 207, 0)
         &:active
-          background-image url('images/FoundryOptions_I6.png')
-          background-position -209px -50px
+          sprite('I6', 209, 50)
         &.current
-          background-image url('images/FoundryOptions_I6.png')
-          background-position 0 -49px
+          sprite('I6', 0, 49)
           color rgba(255, 255, 255, 0.9)
         &.disabled
           text-shadow none
@@ -47,5 +44,4 @@
       text-shadow 0 0 1px rgba(255, 255, 255, 0.7)
     .header-separator
       height 4px
-      background-image url('images/FoundryOptions_I1.png')
-      background-position -128px -149px
+      sprite('I1', 128, 149)
