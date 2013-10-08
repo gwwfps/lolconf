@@ -1,11 +1,18 @@
-angular.module \lolconf .directive \lcConfigEditor, ($compile) ->
-  scope: true
-  link: !(scope, element, attrs) ->
-    scope.setting = scope.$eval attrs.lc-config-editor
-    html = '<span lc-config-editor-' + scope.setting.type + '></span>'
-    inner = angular.element html
-    element.append inner
-    ($compile inner) scope
+angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data) ->
+  {find} = require 'lodash'
+  definition = LC-data.load 'gameConfig'
+  find-setting = (id) ->
+    find definition.settings, {id: id}
+
+  {
+    scope: true
+    link: !(scope, element, attrs) ->
+      scope.setting = find-setting attrs.lc-config-editor
+      html = '<span lc-config-editor-' + scope.setting.type + '></span>'
+      inner = angular.element html
+      element.append inner
+      ($compile inner) scope
+  }
 
 angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
@@ -89,7 +96,7 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
     scope.value = LC-game-config.get scope.setting.key
-    element.html '<input type="range" ng-model="value" min="0" max="1" step="0.01" />'
+    element.html '{{"' + scope.setting.label-key + '"|t}}: <input type="range" ng-model="value" min="0" max="1" step="0.01" />'
     ($compile element.contents!) scope
 
     scope.$watch 'value', (new-value) ->
