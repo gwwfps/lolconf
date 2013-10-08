@@ -17,7 +17,7 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data) ->
 angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
     scope.value = (LC-game-config.get scope.setting.key) === '1'
-    element.html '<div class="ui toggle checkbox"><input type="checkbox" ng-model="value" /><label></label></div>'
+    element.html '{{"' + scope.setting.label-key + '"|t}}: <div class="ui toggle checkbox"><input type="checkbox" ng-model="value" /><label></label></div>'
     ($compile element.contents!) scope
 
     checkbox = element.find 'input'
@@ -66,9 +66,9 @@ rank-directive = (rank-keys) ->
 
       scope.value = LC-game-config.get scope.setting.key    
 
-      inner = angular.element '<div class="ui buttons"></div>'
+      inner = angular.element '<div>{{"' + scope.setting.label-key + '"|t}}:<div class="ui buttons"></div></div>'
       each rank-keys, (key, i) ->
-        inner.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
+        inner.children '.buttons' .append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
       element.append inner
 
       ($compile inner) scope

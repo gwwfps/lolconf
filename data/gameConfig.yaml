@@ -9,7 +9,7 @@ settings:
     type: window-mode
     key: General.WindowMode
     labelKey: GAMECONFIG_SCREEN_MODE
-  - id: vidoe.vsync
+  - id: video.vsync
     type: toggle
     key: General.WaitForVerticalSync
     labelKey: GAMECONFIG_VSYNC
