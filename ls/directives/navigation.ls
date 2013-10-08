@@ -6,9 +6,12 @@ angular.module \lolconf .directive \lcNavigation, ->
 
     $scope.sections = [
       {page: '/index', title-key: \SIDEBAR_INDEX}
-      {page: '/gameConfig', title-key: \SIDEBAR_GAME_CONFIG}
-      {page: '/keybinds', title-key: \SIDEBAR_KEYBINDS, disabled: true}
-      {page: '/latency', title-key: \SIDEBAR_LATENCY}
+      {page: '/hotkeys', title-key: \SIDEBAR_HOTKEYS, disabled: true}
+      {page: '/video', title-key: \SIDEBAR_VIDEO}
+      {page: '/sound', title-key: \SIDEBAR_SOUND}
+      {page: '/interface', title-key: \SIDEBAR_INTERFACE}
+      {page: '/game', title-key: \SIDEBAR_GAME}
+      {page: '/latency', title-key: \SIDEBAR_LATENCY, disabled: true}
       {page: '/appConfig', title-key: \SIDEBAR_APP_CONFIG, disabled: true}
     ]
 

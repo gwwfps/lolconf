@@ -1,116 +1,146 @@
-sections:
-  - title: Video
-    settings:
-    - type: resolution
-      widthKey: General.Width
-      heightKey: General.Height
-      labelKey: GAMECONFIG_RESOLUTION
-    - type: window-mode
-      key: General.WindowMode
-      labelKey: GAMECONFIG_SCREEN_MODE
-    - type: toggle
-      key: General.WaitForVerticalSync
-      labelKey: GAMECONFIG_VSYNC
-    - type: graphics
-      key: Performance.CharacterQuality
-      labelKey: GAMECONFIG_CHAR_QUAL
-    - type: graphics
-      key: Performance.EffectsQuality
-      labelKey: GAMECONFIG_EFFECT_QUAL
-    - type: graphics
-      key: Performance.EnvironmentQuality
-      labelKey: GAMECONFIG_ENV_QUAL
-    - type: graphics
-      key: Performance.ShadowQuality
-      labelKey: GAMECONFIG_SHADOW_QUAL
-    - type: fps-cap
-      key: Performance.FrameCapType
-      labelKey: GAMECONFIG_FPS_CAP
-    - type: toggle
-      key: UnitRenderStyle.Inking
-      labelKey: GAMECONFIG_UNIT_INKING
-  - title: UI & Colors
-    settings:
-    - type: toggle
-      key: HUD.EnableLineMissileVis
-      labelKey: GAMECONFIG_LINE_MISSLE
-    - type: toggle
-      key: HUD.LockCamera
-      labelKey: GAMECONFIG_LOCK_CAMERA
-    - type: toggle
-      key: Performance.EnableHUDAnimations
-      labelKey: GAMECONFIG_HUD_ANIM
-    - type: toggle
-      key: HUD.FlipMiniMap
-      labelKey: GAMECONFIG_MINIMAP_LEFT
-    - type: color-palette
-      key: ColorPalette.ColorPalette
-      labelKey: GAMECONFIG_COLOR
-    - type: toggle
-      key: HUD.ShowAllChannelChat
-      labelKey: GAMECONFIG_ALL_CHAT
-    - type: cooldown-mode
-      key: HUD.NumericCooldownFormat
-      labelKey: GAMECONFIG_COOLDOWN_FORMAT
-  # - title: Controls
-  - title: Sound
-    settings:
-    - type: volume
-      key: Volume.MasterVolume
-      labelKey: GAMECONFIG_MASTER_VOL
-    - type: volume
-      key: Volume.AnnouncerVolume
-      labelKey: GAMECONFIG_ANNOUNCER_VOL
-    - type: volume
-      key: Volume.VoiceVolume
-      labelKey: GAMECONFIG_VO_VOL
-    - type: volume
-      key: Volume.MusicVolume
-      labelKey: GAMECONFIG_MUSIC_VOL
-  - title: Floating Texts
-    settings:
-    - type: toggle
-      key: FloatingText.Absorbed_Enabled
-      labelKey: GAMECONFIG_FT_ABSORPTION
-    - type: toggle
-      key: FloatingText.OMW_Enabled
-      labelKey: GAMECONFIG_FT_OMW
-    - type: toggle
-      key: FloatingText.SpellDamage_Enabled
-      labelKey: GAMECONFIG_FT_SPDMG
-    - type: toggle
-      key: FloatingText.Damage2_Enabled
-      labelKey: GAMECONFIG_FT_DMG2
-    - type: toggle
-      key: FloatingText.Heal2_Enabled
-      labelKey: GAMECONFIG_FT_HEAL2
-    - type: toggle
-      key: FloatingText.Critical2_Enabled
-      labelKey: GAMECONFIG_FT_CRIT2
-    - type: toggle
-      key: FloatingText.Experience2_Enabled
-      labelKey: GAMECONFIG_FT_XP2
-    - type: toggle
-      key: FloatingText.QuestReceived_Enabled
-      labelKey: GAMECONFIG_FT_QREC
-    - type: toggle
-      key: FloatingText.QuestComplete_Enabled
-      labelKey: GAMECONFIG_FT_QCOM
-    - type: toggle
-      key: FloatingText.Score_Enabled
-      labelKey: GAMECONFIG_FT_SCREO
-    - type: toggle
-      key: FloatingText.Critical_Enabled
-      labelKey: GAMECONFIG_FT_CRIT
-    - type: toggle
-      key: FloatingText.EnemyCritical_Enabled
-      labelKey: GAMECONFIG_FT_ENEMY_CRIT
-    - type: toggle
-      key: FloatingText.LegacyCritical_Enabled
-      labelKey: GAMECONFIG_FT_LEGACY_CRIT
-    - type: toggle
-      key: FloatingText.Legacy_Enabled
-      labelKey: GAMECONFIG_FT_LEGACY_DMG
-    - type: toggle
-      key: FloatingText.Debug_Enabled
-      labelKey: GAMECONFIG_FT_DEBUG
+settings:
+  # Video
+  - id: video.resolution
+    type: resolution
+    widthKey: General.Width
+    heightKey: General.Height
+    labelKey: GAMECONFIG_RESOLUTION
+  - id: video.window-mode
+    type: window-mode
+    key: General.WindowMode
+    labelKey: GAMECONFIG_SCREEN_MODE
+  - id: vidoe.vsync
+    type: toggle
+    key: General.WaitForVerticalSync
+    labelKey: GAMECONFIG_VSYNC
+  - id: video.char-qual
+    type: graphics
+    key: Performance.CharacterQuality
+    labelKey: GAMECONFIG_CHAR_QUAL
+  - id: video.effect-qual
+    type: graphics
+    key: Performance.EffectsQuality
+    labelKey: GAMECONFIG_EFFECT_QUAL
+  - id: video.env-qual
+    type: graphics
+    key: Performance.EnvironmentQuality
+    labelKey: GAMECONFIG_ENV_QUAL
+  - id: video.shadow-qual
+    type: graphics
+    key: Performance.ShadowQuality
+    labelKey: GAMECONFIG_SHADOW_QUAL
+  - id: video.fps-cap
+    type: fps-cap
+    key: Performance.FrameCapType
+    labelKey: GAMECONFIG_FPS_CAP
+  - id: video.inking
+    type: toggle
+    key: UnitRenderStyle.Inking
+    labelKey: GAMECONFIG_UNIT_INKING
+  - id: video.color-mode
+    type: color-palette
+    key: ColorPalette.ColorPalette
+    labelKey: GAMECONFIG_COLOR
+  # Interface
+  - id: ui.line-missile
+    type: toggle
+    key: HUD.EnableLineMissileVis
+    labelKey: GAMECONFIG_LINE_MISSLE
+  - id: ui.lock-camera
+    type: toggle
+    key: HUD.LockCamera
+    labelKey: GAMECONFIG_LOCK_CAMERA
+  - id: ui.hud-anim
+    type: toggle
+    key: Performance.EnableHUDAnimations
+    labelKey: GAMECONFIG_HUD_ANIM
+  - id: ui.flip-minimap
+    type: toggle
+    key: HUD.FlipMiniMap
+    labelKey: GAMECONFIG_MINIMAP_LEFT  
+  - id: ui.all-chat
+    type: toggle
+    key: HUD.ShowAllChannelChat
+    labelKey: GAMECONFIG_ALL_CHAT
+  - id: ui.cooldown-mode
+    type: cooldown-mode
+    key: HUD.NumericCooldownFormat
+    labelKey: GAMECONFIG_COOLDOWN_FORMAT
+  # Sound
+  - id: sound.master-vol
+    type: volume
+    key: Volume.MasterVolume
+    labelKey: GAMECONFIG_MASTER_VOL
+  - id: sound.annoucer-vol
+    type: volume
+    key: Volume.AnnouncerVolume
+    labelKey: GAMECONFIG_ANNOUNCER_VOL
+  - id: sound.voice-vol
+    type: volume
+    key: Volume.VoiceVolume
+    labelKey: GAMECONFIG_VO_VOL
+  - id: sound.music-vol
+    type: volume
+    key: Volume.MusicVolume
+    labelKey: GAMECONFIG_MUSIC_VOL
+  # Floating Texts
+  - id: ft.absorption
+    type: toggle
+    key: FloatingText.Absorbed_Enabled
+    labelKey: GAMECONFIG_FT_ABSORPTION
+  - id: ft.omw
+    type: toggle
+    key: FloatingText.OMW_Enabled
+    labelKey: GAMECONFIG_FT_OMW
+  - id: ft.spdmg
+    type: toggle
+    key: FloatingText.SpellDamage_Enabled
+    labelKey: GAMECONFIG_FT_SPDMG
+  - id: ft.dmg2
+    type: toggle
+    key: FloatingText.Damage2_Enabled
+    labelKey: GAMECONFIG_FT_DMG2
+  - id: ft.heal2
+    type: toggle
+    key: FloatingText.Heal2_Enabled
+    labelKey: GAMECONFIG_FT_HEAL2
+  - id: ft.crit2
+    type: toggle
+    key: FloatingText.Critical2_Enabled
+    labelKey: GAMECONFIG_FT_CRIT2
+  - id: ft.xp2
+    type: toggle
+    key: FloatingText.Experience2_Enabled
+    labelKey: GAMECONFIG_FT_XP2
+  - id: ft.qrec
+    type: toggle
+    key: FloatingText.QuestReceived_Enabled
+    labelKey: GAMECONFIG_FT_QREC
+  - id: ft.qcom
+    type: toggle
+    key: FloatingText.QuestComplete_Enabled
+    labelKey: GAMECONFIG_FT_QCOM
+  - id: ft.score
+    type: toggle
+    key: FloatingText.Score_Enabled
+    labelKey: GAMECONFIG_FT_SCORE
+  - id: ft.crit
+    type: toggle
+    key: FloatingText.Critical_Enabled
+    labelKey: GAMECONFIG_FT_CRIT
+  - id: ft.enemy-crit
+    type: toggle
+    key: FloatingText.EnemyCritical_Enabled
+    labelKey: GAMECONFIG_FT_ENEMY_CRIT
+  - id: ft.legacy-crit
+    type: toggle
+    key: FloatingText.LegacyCritical_Enabled
+    labelKey: GAMECONFIG_FT_LEGACY_CRIT
+  - id: ft.legacy-dmg
+    type: toggle
+    key: FloatingText.Legacy_Enabled
+    labelKey: GAMECONFIG_FT_LEGACY_DMG
+  - id: ft.debug
+    type: toggle
+    key: FloatingText.Debug_Enabled
+    labelKey: GAMECONFIG_FT_DEBUG
