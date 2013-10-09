@@ -7,6 +7,7 @@
 @import 'includes/button'
 @import 'includes/tab'
 @import 'includes/navigation'
+@import 'includes/configEditor'
 
 @import 'partials/gameConfig'
 
@@ -18,8 +19,9 @@ html *
 body
   font-family "Cabin"
   background url("images/FoundryOptions_I13.png") #2C2E2C
-  color midnight-blue
+  color clouds
   margin 0
+  text-rendering optimizeLegibility
 
 .main-title
   height 40px
@@ -53,7 +55,8 @@ body
   right 22px
   bottom 66px
   overflow-y auto  
-  padding 8px 35px 0 28px  
+  padding 8px 35px 0 28px
+  font-size 15px
 
   &.ng-enter
     transition 0.2s all

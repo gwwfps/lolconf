@@ -8,7 +8,7 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data) ->
     scope: true
     link: !(scope, element, attrs) ->
       scope.setting = find-setting attrs.lc-config-editor
-      html = '<span lc-config-editor-' + scope.setting.type + '></span>'
+      html = '<div class="config-editor" lc-config-editor-' + scope.setting.type + '></div>'
       inner = angular.element html
       element.append inner
       ($compile inner) scope
@@ -95,9 +95,15 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
 
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
-    scope.value = LC-game-config.get scope.setting.key
-    element.html '{{"' + scope.setting.label-key + '"|t}}: <input type="range" ng-model="value" min="0" max="1" step="0.01" />'
+    scope.value = Math.round ((LC-game-config.get scope.setting.key) * 100)
+    element
+      ..html ''
+      ..add-class 'config-editor-volume'
+      ..append '<div class="volume-number" ng-bind="value"></div>'
+      ..append '<div class="config-editor-label volume-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<div class="volume-slider"><input type="range" ng-model="value" min="0" max="100" step="1" /></div>'
+      ..append '<div class="volume-mute"></div>'
     ($compile element.contents!) scope
 
     scope.$watch 'value', (new-value) ->
-      LC-game-config.set scope.setting.key, new-value
+      LC-game-config.set scope.setting.key, (new-value / 100)

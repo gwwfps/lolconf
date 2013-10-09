@@ -1,0 +1,28 @@
+.config-editor-label
+  font-weight bold
+
+.config-editor-volume
+  display block
+  width 800px
+  height 78px
+  .volume-number
+    font-weight bold
+    float right
+    margin-right 58px
+  .volume-slider
+    input[type='range']
+      -webkit-appearance none
+      width 746px
+      height 42px
+      sprite('I6', 8, 793)
+      background-color transparent
+      &::-webkit-slider-thumb
+        -webkit-appearance none
+        width 62px
+        height 46px
+        sprite('I1', 124, 781)
+        &:hover
+          sprite('I1', 62, 781)
+        &:active
+          sprite('I1', 186, 781)
+
