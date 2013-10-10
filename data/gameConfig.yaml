@@ -83,6 +83,10 @@ settings:
     type: volume
     key: Volume.MusicVolume
     labelKey: GAMECONFIG_MUSIC_VOL
+  - id: sound.fx-vol
+    type: volume
+    key: Volume.SfxVolume
+    labelKey: GAMECONFIG_SFX_VOL
   # Floating Texts
   - id: ft.absorption
     type: toggle
