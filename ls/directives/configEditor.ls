@@ -96,14 +96,20 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, LC-game-config) ->
   link: !(scope, element, attrs) ->
     scope.value = Math.round ((LC-game-config.get scope.setting.key) * 100)
+    scope.muted = (LC-game-config.get scope.setting.mute-key) == '1'
     element
       ..html ''
       ..add-class 'config-editor-volume'
       ..append '<div class="volume-number" ng-bind="value"></div>'
       ..append '<div class="config-editor-label volume-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<div class="volume-mute" ng-class="{muted: muted}" ng-click="muted = !muted"></div>'
       ..append '<div class="volume-slider"><input type="range" ng-model="value" min="0" max="100" step="1" /></div>'
-      ..append '<div class="volume-mute"></div>'
     ($compile element.contents!) scope
 
-    scope.$watch 'value', (new-value) ->
-      LC-game-config.set scope.setting.key, (new-value / 100)
+    scope.$watch 'value', (new-value, old-value) ->
+      if new-value != old-value
+        scope.muted = false
+        LC-game-config.set scope.setting.key, (new-value / 100)
+
+    scope.$watch 'muted', (new-value) ->
+      LC-game-config.set scope.setting.mute-key, (if new-value then '1' else '0')
