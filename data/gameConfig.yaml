@@ -72,6 +72,7 @@ settings:
     key: Volume.MasterVolume
     muteKey: Volume.MasterMute
     labelKey: GAMECONFIG_MASTER_VOL
+    master: y
   - id: sound.annoucer-vol
     type: volume
     key: Volume.AnnouncerVolume
