@@ -16,16 +16,19 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data) ->
 
 angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
-    scope.value = (LC-game-config.get scope.setting.key) === '1'
-    element.html '{{"' + scope.setting.label-key + '"|t}}: <div class="ui toggle checkbox"><input type="checkbox" ng-model="value" /><label></label></div>'
+    checked-val = if scope.setting.reverse then '0' else '1'
+    unchecked-val = if scope.setting.reverse then '1' else '0'
+
+    scope.value = (LC-game-config.get scope.setting.key) == checked-val
+    element
+      ..html ''
+      ..add-class 'config-editor-toggle'
+      ..append '<div class="toggle-checkbox" ng-class="{checked: value}" ng-click="value = !value"></div>'
+      ..append '<div class="config-editor-label toggle-label">{{"' + scope.setting.label-key + '"|t}}</div>'
     ($compile element.contents!) scope
 
-    checkbox = element.find 'input'
-    element.find '.checkbox' .on \click, ->
-      checkbox.trigger \click
-
     scope.$watch 'value', (new-value) ->
-      LC-game-config.set scope.setting.key, if new-value is true then '1' else '0'
+      LC-game-config.set scope.setting.key, if new-value then checked-val else unchecked-val
 
 angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config, LC-probe) -> 
   link: !(scope, element, attrs) ->

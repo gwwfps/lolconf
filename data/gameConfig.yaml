@@ -93,6 +93,11 @@ settings:
     key: Volume.SfxVolume
     muteKey: Volume.SfxMute
     labelKey: GAMECONFIG_SFX_VOL
+  - id: sound.disable
+    type: toggle
+    key: General.EnableAudio
+    labelKey: GAMECONFIG_AUDIO_DISABLE
+    reverse: y
   # Floating Texts
   - id: ft.absorption
     type: toggle
