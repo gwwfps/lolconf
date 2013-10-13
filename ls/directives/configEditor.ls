@@ -12,6 +12,7 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data) ->
       inner = angular.element html
       element.append inner
       ($compile inner) scope
+      element.add-class 'config-editor-container'
   }
 
 angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 

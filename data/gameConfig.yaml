@@ -66,6 +66,24 @@ settings:
     type: cooldown-mode
     key: HUD.NumericCooldownFormat
     labelKey: GAMECONFIG_COOLDOWN_FORMAT
+  # Game
+  - id: game.respawn-camera
+    type: toggle
+    key: General.SnapCameraOnRespawn
+    labelKey: GAMECONFIG_RESPAWN_CAMERA
+  - id: game.smooth-camera
+    type: toggle
+    key: HUD.ReplayScrollSmoothingEnabled
+    labelKey: GAMECONFIG_SMOOTH_CAMERA
+  - id: game.auto-attack
+    type: toggle
+    key: General.AutoAcquireTarget
+    labelKey: GAMECONFIG_AUTO_ATTACK
+  - id: game.predict-movement
+    type: toggle
+    key: General.PredictMovement
+    labelKey: GAMECONFIG_PREDICT_MOVEMENT
+    tooltipKey: GAMECONFIG_PREDICT_MOVEMENT_TOOLTIP
   # Sound
   - id: sound.master-vol
     type: volume
