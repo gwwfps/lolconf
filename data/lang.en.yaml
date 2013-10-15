@@ -34,6 +34,7 @@ GAMECONFIG_ANNOUNCER_VOL: Announcer Volume
 GAMECONFIG_VO_VOL: Voice Volume
 GAMECONFIG_MUSIC_VOL: Music Volume
 GAMECONFIG_SFX_VOL: Sound FX Volume
+GAMECONFIG_MOUSE_SPEED: Mouse speed
 GAMECONFIG_AUDIO_DISABLE: Disable All Sound
 GAMECONFIG_AUDIO_DISABLE_TIP: Disabling all sound may improve performance
 GAMECONFIG_RESPAWN_CAMERA: Move camera on revive

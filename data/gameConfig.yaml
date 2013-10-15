@@ -67,6 +67,12 @@ settings:
     key: HUD.NumericCooldownFormat
     labelKey: GAMECONFIG_COOLDOWN_FORMAT
   # Game
+  - id: game.mouse-speed
+    type: range
+    key: General.GameMouseSpeed
+    labelKey: GAMECONFIG_MOUSE_SPEED
+    max: 20
+    increment: 1
   - id: game.respawn-camera
     type: toggle
     key: General.SnapCameraOnRespawn
