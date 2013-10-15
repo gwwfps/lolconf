@@ -73,6 +73,10 @@ settings:
     labelKey: GAMECONFIG_MOUSE_SPEED
     max: 20
     increment: 1
+  - id: game.camera-speed
+    type: range
+    key: HUD.MapScrollSpeed
+    labelKey: GAMECONFIG_CAMERA_SPEED
   - id: game.respawn-camera
     type: toggle
     key: General.SnapCameraOnRespawn
