@@ -102,16 +102,16 @@ angular.module \lolconf .directive \lcConfigEditorRange, ($compile, LC-game-conf
     min = scope.setting.min or 0
     max = scope.setting.max or 1
     increment = scope.setting.increment or 0.01
-    
+
     scope.value = parse-float (LC-game-config.get scope.setting.key)
     scope.display = -> Math.round scope.value / max * 100
 
     element
       ..html ''
-      ..add-class 'config-editor-volume'
-      ..append '<div class="volume-number" ng-bind="display()"></div>'
-      ..append '<div class="config-editor-label volume-label">{{"' + scope.setting.label-key + '"|t}}</div>'
-      ..append '<div class="volume-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
+      ..add-class 'config-editor-range'
+      ..append '<div class="range-number" ng-bind="display()"></div>'
+      ..append '<div class="config-editor-label range-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<div class="range-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
     ($compile element.contents!) scope
 
     scope.$watch 'value', !(new-value, old-value) ->
@@ -120,29 +120,25 @@ angular.module \lolconf .directive \lcConfigEditorRange, ($compile, LC-game-conf
 
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope, LC-game-config) ->
   link: !(scope, element, attrs) ->
-    scope.value = Math.round ((LC-game-config.get scope.setting.key) * 100)
     scope.muted = (LC-game-config.get scope.setting.mute-key) == '1'
     element
       ..html ''
       ..add-class 'config-editor-volume'
-      ..append '<div class="volume-number" ng-bind="value"></div>'
-      ..append '<div class="config-editor-label volume-label">{{"' + scope.setting.label-key + '"|t}}</div>'
       ..append '<div class="volume-mute" ng-class="{muted: muted}" ng-click="muted = !muted"></div>'
-      ..append '<div class="volume-slider"><input type="range" ng-model="value" min="0" max="100" step="1" /></div>'
+      ..append '<div lc-config-editor-range></div>'
     ($compile element.contents!) scope
 
     if scope.setting.master
       element.add-class 'config-editor-volume-master'
-    else
-      $root-scope.$on \game-config:master-mute, !(event, master-value) ->
-        scope.muted = master-value
+    # else    
+    #   $root-scope.$on \game-config:master-mute, !(event, master-value) ->
+    #     scope.muted = master-value
 
     scope.$watch 'value', !(new-value, old-value) ->
       if new-value != old-value
         scope.muted = false
-        LC-game-config.set scope.setting.key, (new-value / 100)
 
     scope.$watch 'muted', !(new-value) ->
       LC-game-config.set scope.setting.mute-key, (if new-value then '1' else '0')
-      if scope.setting.master
-        scope.$emit \game-config:master-mute, new-value      
+      # if scope.setting.master
+      #   scope.$emit \game-config:master-mute, new-value      
