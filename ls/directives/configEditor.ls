@@ -97,6 +97,27 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
   \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
 ]
 
+angular.module \lolconf .directive \lcConfigEditorRange, ($compile, LC-game-config) ->
+  link: !(scope, element, attrs) ->
+    min = scope.setting.min or 0
+    max = scope.setting.max or 1
+    increment = scope.setting.increment or 0.01
+    
+    scope.value = parse-float (LC-game-config.get scope.setting.key)
+    scope.display = -> Math.round scope.value / max * 100
+
+    element
+      ..html ''
+      ..add-class 'config-editor-volume'
+      ..append '<div class="volume-number" ng-bind="display()"></div>'
+      ..append '<div class="config-editor-label volume-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<div class="volume-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
+    ($compile element.contents!) scope
+
+    scope.$watch 'value', !(new-value, old-value) ->
+      if new-value != old-value
+        LC-game-config.set scope.setting.key, new-value
+
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope, LC-game-config) ->
   link: !(scope, element, attrs) ->
     scope.value = Math.round ((LC-game-config.get scope.setting.key) * 100)
