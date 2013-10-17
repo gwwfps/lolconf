@@ -1,9 +1,0 @@
-.game-config(ng-controller='GameConfigCtrl')
-  .tabs(lc-tabs='tabs')
-
-  .settings
-    .ui.vertical.menu
-      .item(ng-repeat='setting in currentSection().settings')
-        span.setting-label {{setting.labelKey|t}}
-        span.setting-control(lc-config-editor='setting')
-        
