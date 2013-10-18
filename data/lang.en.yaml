@@ -43,6 +43,12 @@ GAMECONFIG_SMOOTH_CAMERA: Enable smooth camera
 GAMECONFIG_AUTO_ATTACK: Auto attack
 GAMECONFIG_PREDICT_MOVEMENT: Use movement prediction
 GAMECONFIG_PREDICT_MOVEMENT_TOOLTIP: Under slow network conditions increases perceived responsiveness of your champion's movement
+GAMECONFIG_HEALTH_BARS: Show Health Bars
+GAMECONFIG_SUMMONER_NAMES: Show Summoner Names
+GAMECONFIG_LOC_SLOWS: Show Slows in Loss of Control UI
+GAMECONFIG_DAMAGE_FLASH: Screen flash on damage
+GAMECONFIG_LOC_FLASH: Screen flash on loss of control
+GAMECONFIG_OBJECT_TIPS: Show New Player Tooltips
 GAMECONFIG_FT_ABSORPTION: Absorption
 GAMECONFIG_FT_OMW: OMW
 GAMECONFIG_FT_SPDMG: Spell damage

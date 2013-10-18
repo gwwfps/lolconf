@@ -42,6 +42,30 @@ settings:
     key: ColorPalette.ColorPalette
     labelKey: GAMECONFIG_COLOR
   # Interface
+  - id: ui.health-bars
+    type: toggle
+    key: HUD.DrawHealthBars
+    labelKey: GAMECONFIG_HEALTH_BARS
+  - id: ui.summoner-names
+    type: toggle
+    key: HUD.ShowSummonerNames
+    labelKey: GAMECONFIG_SUMMONER_NAMES
+  - id: ui.loc-slows
+    type: toggle
+    key: LossOfControl.ShowSlows
+    labelKey: GAMECONFIG_LOC_SLOWS
+  - id: ui.damage-flash
+    type: toggle
+    key: HUD.FlashScreenWhenDamaged
+    labelKey: GAMECONFIG_DAMAGE_FLASH
+  - id: ui.loc-flash
+    type: toggle
+    key: HUD.FlashScreenWhenStunned
+    labelKey: GAMECONFIG_LOC_FLASH
+  - id: ui.object-tips
+    type: toggle
+    key: HUD.ObjectTooltips
+    labelKey: GAMECONFIG_OBJECT_TIPS
   - id: ui.line-missile
     type: toggle
     key: HUD.EnableLineMissileVis
