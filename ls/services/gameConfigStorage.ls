@@ -1,4 +1,4 @@
-angular.module \lolconf .factory \LCGameConfig, (LC-game-location, LC-logger) -> 
+angular.module \lolconf .factory \LCGameConfigStorage, (LC-game-location, LC-logger) -> 
   require! {
     read: fs.read-file-sync
     write: fs.write-file-sync
