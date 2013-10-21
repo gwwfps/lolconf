@@ -8,12 +8,10 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-game-config-de
     ($compile inner) scope
     element.add-class 'config-editor-container'
 
-angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config-storage) -> 
+angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
   link: !(scope, element, attrs) ->
-    checked-val = if scope.setting.reverse then '0' else '1'
-    unchecked-val = if scope.setting.reverse then '1' else '0'
+    scope.value = LC-game-config.get-value scope.setting
 
-    scope.value = (LC-game-config-storage.get scope.setting.key) == checked-val
     element
       ..html ''
       ..add-class 'config-editor-toggle'
@@ -24,7 +22,7 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
     ($compile element.contents!) scope
 
     scope.$watch 'value', (new-value) ->
-      LC-game-config-storage.set scope.setting.key, if new-value then checked-val else unchecked-val
+      LC-game-config.set-value scope.setting, new-value
 
 angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config-storage, LC-probe) -> 
   link: !(scope, element, attrs) ->
