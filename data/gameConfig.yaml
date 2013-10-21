@@ -46,6 +46,7 @@ settings:
     type: toggle
     key: HUD.DrawHealthBars
     labelKey: GAMECONFIG_HEALTH_BARS
+    defaultValue: y
   - id: ui.summoner-names
     type: toggle
     key: HUD.ShowSummonerNames

@@ -26,13 +26,25 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
   get-value = (setting) ->
     parser = parsers[setting.type]
     retriever = retrievers[setting.type]
+    
     raw-value = retriever setting
-    parser setting, raw-value
+    if raw-value is void
+      if setting.default-value is void
+        throw new Error "Attempted to get setting '#{setting.id}' with no value and no default."
+      else
+        return setting.default-value
+    
+    parsed-value = parser setting, raw-value
+    if parsed-value is void
+      throw new Error "Setting '#{setting.id}' with raw-value '#{raw-value}' cannot be parsed."
+    parsed-value
 
   set-value = !(setting, value) ->
     printer = printers[setting.type]
     storer = storers[setting.type]
     printed-value = printer setting, value
+    if printed-value is void
+      throw new Error "Setting '#{setting.id}' with value '#{value}' cannot be printed into cfg file format."
     storer setting, printed-value
 
   {
