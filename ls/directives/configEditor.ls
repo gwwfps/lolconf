@@ -1,17 +1,23 @@
-angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-game-config-definition) ->
+angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-game-config-definition, LC-game-config) ->
   scope: true
   link: !(scope, element, attrs) ->
     scope.setting = LC-game-config-definition.find attrs.lc-config-editor
+    scope.value = LC-game-config.get-value scope.setting
+
     html = '<div class="config-editor" lc-config-editor-' + scope.setting.type + '></div>'
     inner = angular.element html
     element.append inner
     ($compile inner) scope
     element.add-class 'config-editor-container'
 
-angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-config) -> 
-  link: !(scope, element, attrs) ->
-    scope.value = LC-game-config.get-value scope.setting
+    scope.$watch 'value', !(new-value, old-value) ->
+      if new-value != old-value
+        LC-game-config.set-value scope.setting, new-value
+    , true
 
+
+angular.module \lolconf .directive \lcConfigEditorToggle, ($compile) -> 
+  link: !(scope, element, attrs) ->
     element
       ..html ''
       ..add-class 'config-editor-toggle'
@@ -21,21 +27,14 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile, LC-game-con
       element.find '.toggle-checkbox' .attr 'lc-tooltip', "'" + scope.setting.tooltip-key + "'|t"
     ($compile element.contents!) scope
 
-    scope.$watch 'value', (new-value) ->
-      LC-game-config.set-value scope.setting, new-value
 
-angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game-config-storage, LC-probe) -> 
+angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-probe) -> 
   link: !(scope, element, attrs) ->
     {map, zip, zip-object} = require 'lodash'
 
     element.html '<select ng-model="value" ng-options="label for (label, resolution) in resolutions"></select>' 
     
     select = element.find 'select'
-
-    saved-value = {
-      width: LC-game-config-storage.get scope.setting.width-key
-      height: LC-game-config-storage.get scope.setting.height-key
-    }
 
     resolution-to-label = (resolution) ->
       resolution.width + 'x' + resolution.height
@@ -45,23 +44,16 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-game
         [(resolution-to-label resolution), resolution]
       ))
 
-      saved-label = resolution-to-label saved-value
-      if !(saved-label of scope.resolutions)
-        scope.resolutions[saved-label] = saved-value
-      scope.value = scope.resolutions[saved-label]
+      label = resolution-to-label scope.value
+      scope.resolutions[label] = scope.value
       
       ($compile element.contents!) scope
 
-      scope.$watch 'value', (new-value) ->
-        LC-game-config-storage.set scope.setting.width-key, new-value.width
-        LC-game-config-storage.set scope.setting.height-key, new-value.height
 
 rank-directive = (rank-keys) ->
   ($compile, LC-game-config-storage) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
-
-      scope.value = LC-game-config-storage.get scope.setting.key    
 
       inner = angular.element '<div>{{"' + scope.setting.label-key + '"|t}}:<div class="ui buttons"></div></div>'
       each rank-keys, (key, i) ->
@@ -69,9 +61,6 @@ rank-directive = (rank-keys) ->
       element.append inner
 
       ($compile inner) scope
-
-      scope.$watch 'value', (new-value) ->      
-        LC-game-config-storage.set scope.setting.key, new-value
         
 angular.module \lolconf .directive \lcConfigEditorGraphics, rank-directive [
   \GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST
@@ -90,13 +79,13 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
   \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
 ]
 
-angular.module \lolconf .directive \lcConfigEditorRange, ($compile, LC-game-config-storage) ->
+
+angular.module \lolconf .directive \lcConfigEditorRange, ($compile) ->
   link: !(scope, element, attrs) ->
     min = scope.setting.min or 0
     max = scope.setting.max or 1
     increment = scope.setting.increment or 0.01
-
-    scope.value = parse-float (LC-game-config-storage.get scope.setting.key)
+    
     scope.display = -> Math.round scope.value / max * 100
 
     element
@@ -107,19 +96,23 @@ angular.module \lolconf .directive \lcConfigEditorRange, ($compile, LC-game-conf
       ..append '<div class="range-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
     ($compile element.contents!) scope
 
-    scope.$watch 'value', !(new-value, old-value) ->
-      if new-value != old-value
-        LC-game-config-storage.set scope.setting.key, new-value
-
 angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope, LC-game-config-storage) ->
-  link: !(scope, element, attrs) ->
-    scope.muted = (LC-game-config-storage.get scope.setting.mute-key) == '1'
+  link: !(scope, element, attrs) ->    
     element
       ..html ''
       ..add-class 'config-editor-volume'
-      ..append '<div class="volume-mute" ng-class="{muted: muted}" ng-click="muted = !muted"></div>'
-      ..append '<div lc-config-editor-range></div>'
+      ..append '<div class="volume-mute" ng-class="{muted: value.muted}" ng-click="value.muted = !value.muted"></div>'      
     ($compile element.contents!) scope
+
+    volume-range = $ '<div lc-config-editor-range></div>'
+    volume-scope = (scope.$new true) <<<
+      setting:
+        label-key: scope.setting.label-key
+      value: scope.value.volume
+    element.append volume-range
+    ($compile element.contents!) volume-scope
+    volume-scope.$watch 'value', !(new-value)->
+      scope.value.volume = new-value
 
     if scope.setting.master
       element.add-class 'config-editor-volume-master'
@@ -127,11 +120,10 @@ angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope
     #   $root-scope.$on \game-config:master-mute, !(event, master-value) ->
     #     scope.muted = master-value
 
-    scope.$watch 'value', !(new-value, old-value) ->
+    scope.$watch 'value.volume', !(new-value, old-value) ->
       if new-value != old-value
-        scope.muted = false
+        scope.value.muted = false
 
-    scope.$watch 'muted', !(new-value) ->
-      LC-game-config-storage.set scope.setting.mute-key, (if new-value then '1' else '0')
+    # scope.$watch 'muted', !(new-value) ->
       # if scope.setting.master
       #   scope.$emit \game-config:master-mute, new-value      

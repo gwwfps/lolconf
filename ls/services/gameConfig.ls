@@ -1,28 +1,40 @@
-angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) -> 
+angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
   unprocessed = (setting, value) -> value
+  single-key-retriever = (setting) -> LC-game-config-storage.get setting.key
+  single-key-storer = !(setting, printed-value) -> LC-game-config-storage.set setting.key, printed-value
+
+
+  retrievers =
+    toggle: single-key-retriever
+    range: single-key-retriever
+    volume: (setting) ->
+      volume: LC-game-config-storage.get setting.key
+      muted: LC-game-config-storage.get setting.mute-key
+    resolution: (setting) ->
+      width: LC-game-config-storage.get setting.width-key
+      height: LC-game-config-storage.get setting.height-key
+    graphics: single-key-retriever
+    'fps-cap': single-key-retriever
+    'window-mode': single-key-retriever
+    'cooldown-mode': single-key-retriever
 
   parsers =
     toggle: (setting, raw-value) ->
       switch raw-value
       | '1' => !setting.reverse
       | '0' => !!setting.reverse
-    
-  printers =
-    toggle: (setting, value) ->
-      switch value
-      | !setting.reverse  => '1'
-      | !!setting.reverse => '0'
+    range: (setting, raw-value) -> parse-float raw-value
+    volume: (setting, raw-value) ->
+      volume: parsers.range {}, raw-value.volume
+      muted: parsers.toggle {}, raw-value.muted
+    resolution: (setting, raw-value) ->
+      width: parse-int raw-value.width
+      height: parse-int raw-value.height
+    graphics: unprocessed
+    'fps-cap': unprocessed
+    'window-mode': unprocessed
+    'cooldown-mode': unprocessed
   
-  single-key-retriever = (setting) -> LC-game-config-storage.get setting.key
-
-  retrievers =
-    toggle: single-key-retriever
-
-  single-key-storer = (setting, printed-value) -> LC-game-config-storage.set setting.key, printed-value
-
-  storers =
-    toggle: single-key-storer
-
   get-value = (setting) ->
     parser = parsers[setting.type]
     retriever = retrievers[setting.type]
@@ -37,7 +49,39 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     parsed-value = parser setting, raw-value
     if parsed-value is void
       throw new Error "Setting '#{setting.id}' with raw-value '#{raw-value}' cannot be parsed."
-    parsed-value
+    parsed-value    
+
+
+  printers =
+    toggle: (setting, value) ->
+      switch value
+      | !setting.reverse  => '1'
+      | !!setting.reverse => '0'
+    range: (setting, value) -> value.to-string!
+    volume: (setting, value) ->
+      volume: printers.range {}, value.volume
+      muted: printers.toggle {}, value.muted
+    resolution: (setting, value) ->
+      width: value.width.to-string!
+      height: value.height.to-string!
+    graphics: unprocessed
+    'fps-cap': unprocessed
+    'window-mode': unprocessed
+    'cooldown-mode': unprocessed
+
+  storers =
+    toggle: single-key-storer
+    range: single-key-storer
+    volume: !(setting, printed-value) ->
+      LC-game-config-storage.set setting.key, printed-value.volume
+      LC-game-config-storage.set setting.mute-key, printed-value.muted  
+    resolution: !(setting, printed-value) ->
+      LC-game-config-storage.set setting.width-key, printed-value.width
+      LC-game-config-storage.set setting.height-key, printed-value.height
+    graphics: single-key-storer
+    'fps-cap': single-key-storer
+    'window-mode': single-key-storer
+    'cooldown-mode': single-key-storer
 
   set-value = !(setting, value) ->
     printer = printers[setting.type]
@@ -46,6 +90,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     if printed-value is void
       throw new Error "Setting '#{setting.id}' with value '#{value}' cannot be printed into cfg file format."
     storer setting, printed-value
+
 
   {
     get-value: get-value
