@@ -22,7 +22,7 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile) ->
       ..html ''
       ..add-class 'config-editor-toggle'
       ..append '<div class="toggle-checkbox" ng-class="{checked: value}" ng-click="value = !value"></div>'
-      ..append '<div class="config-editor-label toggle-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<div class="config-editor-label toggle-label" ng-click="value = !value">{{"' + scope.setting.label-key + '"|t}}</div>'
     if scope.setting.tooltip-key
       element.find '.toggle-checkbox' .attr 'lc-tooltip', "'" + scope.setting.tooltip-key + "'|t"
     ($compile element.contents!) scope
