@@ -4,7 +4,7 @@ angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-game-config-de
     scope.setting = LC-game-config-definition.find attrs.lc-config-editor
     scope.value = LC-game-config.get-value scope.setting
 
-    html = '<div class="config-editor" lc-config-editor-' + scope.setting.type + '></div>'
+    html = '<div class="config-editor config-editor-' + scope.setting.type + '" lc-config-editor-' + scope.setting.type + '></div>'
     inner = angular.element html
     element.append inner
     ($compile inner) scope
@@ -20,7 +20,6 @@ angular.module \lolconf .directive \lcConfigEditorToggle, ($compile) ->
   link: !(scope, element, attrs) ->
     element
       ..html ''
-      ..add-class 'config-editor-toggle'
       ..append '<div class="toggle-checkbox" ng-class="{checked: value}" ng-click="value = !value"></div>'
       ..append '<div class="config-editor-label toggle-label" ng-click="value = !value">{{"' + scope.setting.label-key + '"|t}}</div>'
     if scope.setting.tooltip-key
@@ -32,7 +31,10 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-prob
   link: !(scope, element, attrs) ->
     {map, zip, zip-object} = require 'lodash'
 
-    element.html '<select ng-model="value" ng-options="label for (label, resolution) in resolutions"></select>' 
+    element
+      ..html ''
+      ..append '<div class="config-editor-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+      ..append '<select ng-model="value" ng-options="label for (label, resolution) in resolutions"></select>' 
     
     select = element.find 'select'
 
@@ -90,7 +92,6 @@ angular.module \lolconf .directive \lcConfigEditorRange, ($compile) ->
 
     element
       ..html ''
-      ..add-class 'config-editor-range'
       ..append '<div class="range-number" ng-bind="display()"></div>'
       ..append '<div class="config-editor-label range-label">{{"' + scope.setting.label-key + '"|t}}</div>'
       ..append '<div class="range-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
@@ -100,7 +101,6 @@ angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope
   link: !(scope, element, attrs) ->    
     element
       ..html ''
-      ..add-class 'config-editor-volume'
       ..append '<div class="volume-mute" ng-class="{muted: value.muted}" ng-click="value.muted = !value.muted"></div>'      
     ($compile element.contents!) scope
 
