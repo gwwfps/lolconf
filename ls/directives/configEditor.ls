@@ -104,7 +104,7 @@ angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope
       ..append '<div class="volume-mute" ng-class="{muted: value.muted}" ng-click="value.muted = !value.muted"></div>'      
     ($compile element.contents!) scope
 
-    volume-range = $ '<div lc-config-editor-range></div>'
+    volume-range = $ '<div lc-config-editor-range class="config-editor-range"></div>'
     volume-scope = (scope.$new true) <<<
       setting:
         label-key: scope.setting.label-key
