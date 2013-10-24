@@ -63,6 +63,7 @@ rank-directive = (rank-keys) ->
 
       element
         ..html ''
+        ..add-class 'config-editor-rank'
         ..append '<div class="config-editor-label">{{"' + scope.setting.label-key + '"|t}}</div>'
         ..append ranks
 
