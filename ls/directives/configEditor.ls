@@ -57,12 +57,16 @@ rank-directive = (rank-keys) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
 
-      inner = angular.element '<div>{{"' + scope.setting.label-key + '"|t}}:<div class="ui buttons"></div></div>'
+      ranks = angular.element '<div class="ui buttons"></div>'
       each rank-keys, (key, i) ->
-        inner.children '.buttons' .append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
-      element.append inner
+        ranks.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
 
-      ($compile inner) scope
+      element
+        ..html ''
+        ..append '<div class="config-editor-label">{{"' + scope.setting.label-key + '"|t}}</div>'
+        ..append ranks
+
+      ($compile element.contents!) scope
         
 angular.module \lolconf .directive \lcConfigEditorGraphics, rank-directive [
   \GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST

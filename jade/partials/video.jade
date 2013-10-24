@@ -1,10 +1,18 @@
 .section-video
   div(lc-config-editor='video.resolution')
-.ui.vertical.menu
-  .item(lc-config-editor='video.window-mode')
-  .item(lc-config-editor='video.char-qual')
-  .item(lc-config-editor='video.effect-qual')
-  .item(lc-config-editor='video.env-qual')
-  .item(lc-config-editor='video.shadow-qual')
-  .item(lc-config-editor='video.vsync')
-  .item(lc-config-editor='video.fps-cap')
+  div(lc-config-editor='video.window-mode')
+
+  h3 {{'GAMECONFIG_SUBSECTION_GRAPHICS'|t}}
+
+  div(lc-config-editor='video.char-qual')
+  div(lc-config-editor='video.effect-qual')
+  div(lc-config-editor='video.env-qual')
+  div(lc-config-editor='video.shadow-qual')
+
+  h3 {{'GAMECONFIG_SUBSECTION_ADVANCED'|t}}
+
+  div(lc-config-editor='video.vsync')
+  div(lc-config-editor='video.fps-cap')
+
+  
+  
