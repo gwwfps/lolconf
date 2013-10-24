@@ -1,4 +1,6 @@
-config-editor-width-half = 410px
+config-editor-half-width()
+  width 410px
+  vertical-align top
 
 .config-editor-container
   display inline-block
@@ -54,7 +56,7 @@ config-editor-width-half = 410px
         sprite('I6', 39, 875)
 
 .config-editor-toggle
-  width config-editor-width-half
+  config-editor-half-width()
   .toggle-label
     display inline-block
     vertical-align middle
@@ -70,7 +72,7 @@ config-editor-width-half = 410px
       sprite('I6', 0, 835)
 
 .config-editor-resolution
-  width config-editor-width-half
+  config-editor-half-width()
   select
     -webkit-appearance none
     width 250px
@@ -89,4 +91,4 @@ config-editor-width-half = 410px
       sprite('I6', 0, 622)
 
 .config-editor-rank
-  width config-editor-width-half
+  config-editor-half-width()
