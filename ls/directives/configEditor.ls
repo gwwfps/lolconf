@@ -86,6 +86,9 @@ angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
   \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
 ]
 
+angular.module \lolconf .directive \lcConfigEditorColorPalette, rank-directive [
+  \GAMECONFIG_COLOR_PALETTE_REGULAR \GAMECONFIG_COLOR_PALETTE_ALTERNATIVE \GAMECONFIG_COLOR_PALETTE_COLOR_BLIND
+]
 
 angular.module \lolconf .directive \lcConfigEditorRange, ($compile) ->
   link: !(scope, element, attrs) ->

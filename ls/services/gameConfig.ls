@@ -17,6 +17,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     'fps-cap': single-key-retriever
     'window-mode': single-key-retriever
     'cooldown-mode': single-key-retriever
+    'color-palette': single-key-retriever
 
   parsers =
     toggle: (setting, raw-value) ->
@@ -34,6 +35,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     'fps-cap': unprocessed
     'window-mode': unprocessed
     'cooldown-mode': unprocessed
+    'color-palette': unprocessed
   
   get-value = (setting) ->
     parser = parsers[setting.type]
@@ -68,6 +70,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     'fps-cap': unprocessed
     'window-mode': unprocessed
     'cooldown-mode': unprocessed
+    'color-palette': unprocessed
 
   storers =
     toggle: single-key-storer
@@ -82,6 +85,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     'fps-cap': single-key-storer
     'window-mode': single-key-storer
     'cooldown-mode': single-key-storer
+    'color-palette': unprocessed
 
   set-value = !(setting, value) ->
     printer = printers[setting.type]
