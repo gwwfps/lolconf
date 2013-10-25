@@ -57,9 +57,9 @@ rank-directive = (rank-keys) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
 
-      ranks = angular.element '<div class="ui buttons"></div>'
+      ranks = angular.element '<ul></ul>'
       each rank-keys, (key, i) ->
-        ranks.append '<div class="ui mini button" ng-class="{active: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</div>'
+        ranks.append '<li ng-class="{selected: value === \'' + i + '\'}" ng-click="value = \'' + i + '\'">{{"' + key + '"|t}}</li>'
 
       element
         ..html ''
