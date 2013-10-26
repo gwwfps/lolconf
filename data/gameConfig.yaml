@@ -41,6 +41,10 @@ settings:
     type: color-palette
     key: ColorPalette.ColorPalette
     labelKey: GAMECONFIG_COLOR
+  - id: video.anti-alias
+    type: toggle
+    key: Performance.EnableFXAA
+    labelKey: GAMECONFIG_ANTI_ALIAS
   # Interface
   - id: ui.health-bars
     type: toggle
