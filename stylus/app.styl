@@ -14,12 +14,12 @@
 
 
 html *
-  cursor default
+  cursor url('images/cursor.cur'), default
   user-select none
 
 body
-  font-family "Cabin"
-  background url("images/background.png") #2C2E2C
+  font-family 'Cabin'
+  background url('images/background.png') #2C2E2C
   color clouds
   margin 0
   text-rendering optimizeLegibility
@@ -77,12 +77,12 @@ body
   &::-webkit-scrollbar-track
     sprite('I1', 0, 0)
   &::-webkit-scrollbar-thumb
-    background-image url("images/scroll_thumb.png")
+    background-image url('images/scroll_thumb.png')
     background-size 100% 100%
     &:hover
-      background-image url("images/scroll_thumb_hover.png")
+      background-image url('images/scroll_thumb_hover.png')
     &:active
-      background-image url("images/scroll_thumb_active.png")      
+      background-image url('images/scroll_thumb_active.png')      
 
   &.ng-enter
     transition 0.2s all
