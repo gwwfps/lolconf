@@ -4,8 +4,31 @@ config-editor-half-width()
 
 .config-editor-container
   display inline-block
+  vertical-align top
   &.full-width
     display block
+  .selectize-control
+    width 250px
+    height 43px
+    .selectize-input
+      background-color transparent
+      border 0
+      color clouds
+      font-family 'Cabin'
+      padding-left 35px
+      box-shadow none
+      sprite('I6', 0, 665)
+      &:hover
+        sprite('I6', 0, 579)
+      &:active
+        sprite('I6', 0, 622)
+      &:focus
+        outline 0      
+      &::after, &::before
+        display none
+      &.input-active
+        background-color transparent
+        sprite('I6', 0, 622)
 
 .config-editor-label
   font-weight bold
@@ -76,22 +99,6 @@ config-editor-half-width()
 
 .config-editor-resolution
   config-editor-half-width()
-  select
-    -webkit-appearance none
-    width 250px
-    height 43px
-    background-color transparent
-    border 0
-    color clouds
-    padding-left 30px
-    sprite('I6', 0, 665)
-    &:hover
-      sprite('I6', 0, 579)
-    &:active
-      sprite('I6', 0, 622)
-    &:focus
-      outline 0
-      sprite('I6', 0, 622)
 
 .config-editor-rank
   config-editor-half-width()
@@ -99,7 +106,7 @@ config-editor-half-width()
     list-style none
     padding 0
     margin 0    
-    &:before, &:after
+    &::before, &::after
       display inline-block
       content ''
       vertical-align bottom
@@ -107,13 +114,13 @@ config-editor-half-width()
       height 43px
       background-image url('images/config_editor_rank_edge_normal.png')
       transition 0.3s all
-    &:after
+    &::after
       transform scaleX(-1)
     &:hover
-      &:before, &:after
+      &::before, &::after
         background-image url('images/config_editor_rank_edge_hover.png')
     &:active
-      &:before, &:after
+      &::before, &::after
         background-image url('images/config_editor_rank_edge_active.png')
     li
       display inline-block

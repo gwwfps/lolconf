@@ -34,7 +34,7 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-prob
     element
       ..html ''
       ..append '<div class="config-editor-label">{{"' + scope.setting.label-key + '"|t}}</div>'
-      ..append '<select ng-model="value" ng-options="label for (label, resolution) in resolutions"></select>' 
+      ..append '<select ng-model="value" ng-options="label for (label, resolution) in resolutions" lc-selectize></select>' 
     
     select = element.find 'select'
 
