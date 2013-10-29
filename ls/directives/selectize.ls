@@ -4,6 +4,5 @@ angular.module \lolconf .directive \lcSelectize, ($root-scope) ->
 
     defer ->
       element.selectize {
-        create: true
         sortField: \text
       }
