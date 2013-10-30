@@ -30,6 +30,7 @@
     "windows": "0.0.6",
     "js-yaml": "~2.1.0"
   },
+  "lolVersion": "3.12",
   "main": "main.html#/",
   "window": {
     "toolbar": false,
