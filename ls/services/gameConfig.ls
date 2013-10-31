@@ -85,7 +85,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     'fps-cap': single-key-storer
     'window-mode': single-key-storer
     'cooldown-mode': single-key-storer
-    'color-palette': unprocessed
+    'color-palette': single-key-storer
 
   set-value = !(setting, value) ->
     printer = printers[setting.type]
