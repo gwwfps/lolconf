@@ -123,6 +123,11 @@ settings:
     key: General.PredictMovement
     labelKey: GAMECONFIG_PREDICT_MOVEMENT
     tooltipKey: GAMECONFIG_PREDICT_MOVEMENT_TOOLTIP
+  - id: game.turret-range
+    type: toggle
+    key: General.ShowTurretRangeIndicators
+    labelKey: GAMECONFIG_TURRET_RANGE
+    defaultValue: y
   # Sound
   - id: sound.master-vol
     type: volume

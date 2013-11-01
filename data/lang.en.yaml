@@ -50,6 +50,7 @@ GAMECONFIG_LOC_SLOWS: Show Slows in Loss of Control UI
 GAMECONFIG_DAMAGE_FLASH: Screen flash on damage
 GAMECONFIG_LOC_FLASH: Screen flash on loss of control
 GAMECONFIG_OBJECT_TIPS: Show New Player Tooltips
+GAMECONFIG_TURRET_RANGE: Show turret range indicators (Coop vs AI only)
 GAMECONFIG_FT_ABSORPTION: Absorption
 GAMECONFIG_FT_OMW: OMW
 GAMECONFIG_FT_SPDMG: Spell damage
