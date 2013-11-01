@@ -95,6 +95,22 @@ settings:
     type: cooldown-mode
     key: HUD.NumericCooldownFormat
     labelKey: GAMECONFIG_COOLDOWN_FORMAT
+  - id: ui.neutral-camps
+    type: toggle
+    key: HUD.ShowNeutralCamps
+    labelKey: GAMECONFIG_SHOW_NEUTRAL_CAMPS
+    defaultValue: y
+  - id: ui.minimap-movement
+    type: toggle
+    key: HUD.DisableMinimapMovement
+    reverse: y
+    labelKey: GAMECONFIG_ALLOW_MINIMAP_MOVEMENT
+    defaultValue: y
+  - id: ui.timestamps
+    type: toggle
+    key: HUD.ShowTimestamps
+    labelKey: GAMECONFIG_SHOW_TIMESTAMPS
+    defaultValue: y
   # Game
   - id: game.mouse-speed
     type: range
