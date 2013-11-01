@@ -6,7 +6,7 @@ angular.module \lolconf .directive \lcNavigation, ->
 
     $scope.sections = [
       {page: '/index', title-key: \SIDEBAR_INDEX}
-      {page: '/hotkeys', title-key: \SIDEBAR_HOTKEYS, disabled: true}
+      {page: '/hotkeys', title-key: \SIDEBAR_HOTKEYS}
       {page: '/video', title-key: \SIDEBAR_VIDEO}
       {page: '/sound', title-key: \SIDEBAR_SOUND}
       {page: '/interface', title-key: \SIDEBAR_INTERFACE}
