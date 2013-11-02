@@ -100,6 +100,16 @@ settings:
     key: HUD.ShowNeutralCamps
     labelKey: GAMECONFIG_SHOW_NEUTRAL_CAMPS
     defaultValue: y
+  - id: ui.attack-range
+    type: toggle
+    key: HUD.ShowAttackRadius
+    labelKey: GAMECONFIG_SHOW_ATTACK_RANGE
+    defaultValue: y
+  - id: ui.target-frame
+    type: toggle
+    key: HUD.AutoDisplayTarget
+    labelKey: GAMECONFIG_SHOW_ATTACK_FRAME
+    defaultValue: y
   - id: ui.minimap-movement
     type: toggle
     key: HUD.DisableMinimapMovement
