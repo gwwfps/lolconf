@@ -37,6 +37,12 @@ settings:
     type: toggle
     key: UnitRenderStyle.Inking
     labelKey: GAMECONFIG_UNIT_INKING
+    defaultValue: y
+  - id: video.ppp-lighting
+    type: toggle
+    key: Performance.PerPixelPointLighting
+    labelKey: GAMECONFIG_PPP_LIGHTING
+    defaultValue: y
   - id: video.color-mode
     type: color-palette
     key: ColorPalette.ColorPalette
@@ -45,6 +51,11 @@ settings:
     type: toggle
     key: Performance.EnableFXAA
     labelKey: GAMECONFIG_ANTI_ALIAS
+  - id: video.grass-sway
+    type: toggle
+    key: Performance.EnableGrassSwaying
+    labelKey: GAMECONFIG_GRASS_SWAY
+    defaultValue: y
   # Interface
   - id: ui.health-bars
     type: toggle
