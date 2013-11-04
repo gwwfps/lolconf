@@ -8,7 +8,7 @@ module.exports = (grunt) ->
   grunt.initConfig    
     outputDir: path.join(__dirname, 'build')
 
-    clean: ['<%= outputDir %>']
+    clean: ['<%= outputDir %>', 'images/generated']
 
     compress:
       nw:
@@ -39,7 +39,15 @@ module.exports = (grunt) ->
         files:
           '<%= outputDir %>/app.js': ['ls/**/*.ls']
         options:
-          join: true      
+          join: true
+      spriteCrop:
+        expand: true
+        cwd: 'stylus/helpers'
+        src: ['*.ls']
+        dest: 'stylus/helpers'
+        ext: '.js'
+        options:
+          bare: true
 
     jade:
       main:

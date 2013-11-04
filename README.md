@@ -6,7 +6,7 @@ Configuration utility for League of Legends.
 Build instructions
 ------------------
 
-Prerequisites: [node.js](http://nodejs.org/), [go](http://golang.org/), [grunt](http://gruntjs.com/), [node-webkit](https://github.com/rogerwang/node-webkit)
+Prerequisites: [node.js](http://nodejs.org/), [go](http://golang.org/), [grunt](http://gruntjs.com/), [node-webkit](https://github.com/rogerwang/node-webkit), [GraphicsMagick](http://www.graphicsmagick.org/)
 
 Steps:
 

@@ -1,3 +1,11 @@
+use('../helpers/spriteCrop.js')
+
 sprite(set, x, y)
   background-image url('images/FoundryOptions_'+set+'.png')
   background-position -1px * x -1px * y
+
+sprite-crop(id, x, y, w, h, set-dimensions = true)  
+  background-image url(extract(id, x, y, w, h))
+  if set-dimensions
+    height h * 1px
+    width w * 1px
