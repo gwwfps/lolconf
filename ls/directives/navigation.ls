@@ -11,7 +11,8 @@ angular.module \lolconf .directive \lcNavigation, ->
       {page: '/sound', title-key: \SIDEBAR_SOUND}
       {page: '/interface', title-key: \SIDEBAR_INTERFACE}
       {page: '/game', title-key: \SIDEBAR_GAME}
-      {page: '/latency', title-key: \SIDEBAR_LATENCY, disabled: true}
+      {page: '/hidden', title-key: \SIDEBAR_HIDDEN}
+      # {page: '/latency', title-key: \SIDEBAR_LATENCY, disabled: true}
       {page: '/appConfig', title-key: \SIDEBAR_APP_CONFIG, disabled: true}
     ]
 
