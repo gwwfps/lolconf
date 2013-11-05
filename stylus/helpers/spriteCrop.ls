@@ -3,7 +3,9 @@ module.exports = ->
     nodes = @nodes
     style.define 'extract', (id, x, y, w, h) ->
       {exists-sync, mkdir-sync} = require 'fs'
-      require! 'gm'
+      require! gm
+      Fiber = require 'fibers'
+      Future = require 'fibers/future'
 
       base-dir = "#{__dirname}/../.."
       output-dir = "images/generated"
@@ -13,10 +15,12 @@ module.exports = ->
         if not exists-sync dir
           mkdir-sync dir
 
-      gm "#{base-dir}/images/FoundryOptions_#{id}.png"
-        .crop w, h, x, y
-        .write "#{base-dir}/#{output-filename}", (err) ->
-          if err
-            throw new Error err
+      img = gm "#{base-dir}/images/FoundryOptions_#{id}.png" .crop w, h, x, y
+      write-img = Fiber !->
+        wrapped = Future.wrap img~write, 1
+        err = wrapped "#{base-dir}/#{output-filename}" .wait!
+        if err
+          throw new Error err
+      write-img.run!
       
       new nodes.String output-filename

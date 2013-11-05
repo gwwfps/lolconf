@@ -29,7 +29,8 @@
     "request": "~2.21.0",
     "nconf": "~0.6.7",
     "windows": "0.0.6",
-    "js-yaml": "~2.1.0"
+    "js-yaml": "~2.1.0",
+    "fibers": "~1.0.1"
   },
   "lolVersion": "3.13",
   "main": "main.html#/",

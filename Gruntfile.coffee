@@ -26,12 +26,18 @@ module.exports = (grunt) ->
       main:
         files: [
           expand: true
-          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*', 'images/*'], nwModules
+          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*'], nwModules
           dest: '<%= outputDir %>/'
-        ]        
+        ]
       probe:
         files: [
           '<%= outputDir %>/lolconf-probe.exe':  path.join process.env.GOPATH, 'bin', 'lolconf-probe.exe'
+        ]
+      images:
+        files: [
+          expand: true
+          src: ['images/**']
+          dest: '<%= outputDir %>/'
         ]
 
     lsc: 
@@ -105,8 +111,9 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'build', [
-    'init', 'clean', 'shell:probe', 'copy'
-    'lsc', 'jade', 'stylus'
+    'init', 'clean', 'copy:main'
+    'lsc', 'stylus', 'jade'
+    'shell:probe', 'copy:probe', 'copy:images'
   ]
 
   grunt.registerTask 'build:nw', [
