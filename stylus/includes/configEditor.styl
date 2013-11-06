@@ -17,18 +17,19 @@ config-editor-half-width()
       font-family 'Cabin'
       padding-left 35px
       box-shadow none
-      sprite('I6', 0, 665)
+      sprite-transition()
+      sprite-crop(I6, 0, 665, 250, 43)
       &:hover
-        sprite('I6', 0, 579)
+        sprite-crop(I6, 0, 579, 250, 43)
       &:active
-        sprite('I6', 0, 622)
+        sprite-crop(I6, 0, 622, 250, 43)
       &:focus
         outline 0      
       &::after, &::before
         display none
       &.input-active
         background-color transparent
-        sprite('I6', 0, 622)
+        sprite-crop(I6, 0, 622, 250, 43)
 
 .config-editor-label
   font-weight bold
@@ -51,13 +52,11 @@ config-editor-half-width()
       background-color transparent
       &::-webkit-slider-thumb
         -webkit-appearance none
-        width 62px
-        height 46px
-        sprite('I1', 124, 781)
+        sprite-crop(I1, 124, 781, 62, 46, true, true)
         &:hover
-          sprite('I1', 62, 781)
+          sprite-crop(I1, 62, 781, 62, 46)
         &:active
-          sprite('I1', 186, 781)
+          sprite-crop(I1, 186, 781, 62, 46)
 
 .config-editor-volume
   .config-editor-range
@@ -65,21 +64,19 @@ config-editor-half-width()
       margin-right 16px
   .volume-mute
     display inline-block
-    sprite('I6', 0, 875)
-    width 38px
-    height 39px
+    sprite-crop(I6, 0, 875, 38, 39, true, true)
     float right
     margin 20px 8px 0 0
     &:hover
-      sprite('I6', 78, 875)
+      sprite-crop(I6, 78, 875, 38, 39)
     &:active
-      sprite('I6', 117, 875)
+      sprite-crop(I6, 117, 875, 38, 39)
     &.muted
-      sprite('I6', 195, 875)
+      sprite-crop(I6, 195, 875, 38, 39)
       &:hover
-        sprite('I6', 0, 914)
+        sprite-crop(I6, 0, 914, 38, 39)
       &:active
-        sprite('I6', 39, 875)
+        sprite-crop(I6, 39, 875, 38, 39)
 
 .config-editor-toggle
   config-editor-half-width()
@@ -89,13 +86,11 @@ config-editor-half-width()
   .toggle-checkbox
     display inline-block
     vertical-align middle
-    width 40px
-    height 40px
-    sprite('I6', 80, 835)
+    sprite-crop(I6, 80, 835, 40, 40, true, true)
     &:hover, &:active
-      sprite('I6', 120, 835)
+      sprite-crop(I6, 120, 835, 40, 40)
     &.checked
-      sprite('I6', 0, 835)
+      sprite-crop(I6, 0, 835, 40, 40)
 
 .config-editor-resolution
   config-editor-half-width()
@@ -110,34 +105,30 @@ config-editor-half-width()
       display inline-block
       content ''
       vertical-align bottom
-      width 35px
-      height 43px
-      background-image url('images/config_editor_rank_edge_normal.png')
-      transition 0.3s all
+      sprite-crop(I6, 0, 665, 35, 43, true, true)
     &::after
       transform scaleX(-1)
     &:hover
       &::before, &::after
-        background-image url('images/config_editor_rank_edge_hover.png')
+        sprite-crop(I6, 0, 579, 35, 43)
     &:active
       &::before, &::after
-        background-image url('images/config_editor_rank_edge_active.png')
+        sprite-crop(I6, 0, 622, 35, 43)
     li
       display inline-block
       padding 0 5px
-      background-image url('images/config_editor_rank_bg_normal.png')  
       height 43px
+      sprite-crop(I6, 35, 665, 10, 43, false, true)
       line-height 43px
       text-transform uppercase
       font-size 12px
       color options-blue-green
       vertical-align middle
-      transition 0.3s all
       &:hover, &:active, &.selected
-        letter-spacing 0.5px
-        font-weight bold
         color clouds
+      &:hover
+        text-shadow 0 0 3px rgba(255, 255, 255, 0.9)
       &:hover, &.selected
-        background-image url('images/config_editor_rank_bg_hover.png')
+        sprite-crop(I6, 35, 579, 10, 43)
       &:active
-        background-image url('images/config_editor_rank_bg_active.png')
+        sprite-crop(I6, 35, 622, 10, 43)

@@ -7,10 +7,13 @@ sprite(set, x, y)
 sprite-transition()
   transition background 0.5s
 
-sprite-crop(id, x, y, w, h, set-dimensions = true, set-transition = true)  
-  background-image url(extract(id, x, y, w, h))
+sprite-crop(id, x, y, w, h, set-dimensions = false, set-transition = false)
+  background-image crop(id, x, y, w, h)
   if set-dimensions
     height h * 1px
     width w * 1px
   if set-transition
     sprite-transition()
+
+crop(id, x, y, w, h)
+  url(extract(id, x, y, w, h))

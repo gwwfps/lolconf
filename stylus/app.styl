@@ -41,13 +41,11 @@ body
   position absolute
   right 20px
   top 12px  
-  height 47px
-  width 47px
-  sprite('I6', 99, 97)
+  sprite-crop(I6, 99, 97, 47, 47, true, true)
   &:hover
-    sprite('I6', 146, 97)
+    sprite-crop(I6, 146, 97, 47, 47)
   &:active
-    sprite('I6', 52, 97)
+    sprite-crop(I6, 52, 97, 47, 47)
 
 .main-container 
   position absolute
@@ -70,12 +68,13 @@ body
   &::-webkit-scrollbar-button
     width 22px
     height 28px
+    sprite-transition()
     &:start
-      sprite('I1', 128, 120)
+      sprite(I1, 128, 120)
     &:end
-      sprite('I1', 152, 120)
+      sprite(I1, 152, 120)
   &::-webkit-scrollbar-track
-    sprite('I1', 0, 0)
+    sprite(I1, 0, 0)
   &::-webkit-scrollbar-thumb
     background-image url('images/scroll_thumb.png')
     background-size 100% 100%
