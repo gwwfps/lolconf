@@ -1,23 +1,32 @@
-lc-button(bg, fg = white, shadow = midnight-blue)
-  color fg
-  background-color bg
-  box-shadow inset -1px -2px mix(bg, shadow, 70%)
-  border 1px solid mix(bg, shadow, 60%)
-  text-decoration none
-  box-sizing border-box
-  margin 0
-  padding 0.2em 1em
-  text-shadow 0 1px shadow
-  border-radius 3px
-  transition background-color .35s, box-shadow .35s
+.button
+  display inline-block
+  padding 0 5px
+  a
+    display inline-block
+    color clouds
+    height 53px
+    line-height 53px
+    sprite-crop(I1, 207, 887, 27, 53, false, true)
+  &::before, &::after
+    display inline-block
+    content ''
+    vertical-align bottom
+  &::before
+    sprite-crop(I1, 46, 887, 47, 53, true, true)
+  &::after
+    sprite-crop(I1, 0, 887, 45, 53, true, true)
   &:hover
-    background-color mix(bg, fg, 80%)
+    &::before
+      sprite-crop(I1, 140, 834, 47, 53)
+    &::after
+      sprite-crop(I1, 93, 834, 45, 53)
+    a
+      sprite-crop(I1, 175, 887, 27, 53)
   &:active
-    background-color mix(bg, shadow, 90%)
-    box-shadow inset 0 1px mix(bg, shadow, 50%)
-  &:disabled
-    opacity 0.3
-
-button, a.button
-  lc-button turquoise
-  
+    &::before
+      sprite-crop(I1, 187, 834, 47, 53)
+    &::after
+      sprite-crop(I1, 46, 834, 45, 53)
+    a
+      sprite-crop(I1, 143, 887, 27, 53)
+    
