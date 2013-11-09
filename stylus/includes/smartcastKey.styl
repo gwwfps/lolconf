@@ -1,11 +1,13 @@
 .smartcast-key
+  margin 10px
+  transform scale(1.2)
   display inline-block
   width 104px
   height 151px
   .smartcast-key-selector
     display inline-block
-    font-size 72px
-    line-height 98px
+    font-size 64px
+    line-height 128px    
     text-align center
     sprite-crop(I1, 0, 546, 104, 98, true, true)
     &:hover
@@ -15,3 +17,5 @@
   .smartcast-key-toggle
     display inline-block
     sprite-crop(I1, 32, 940, 104, 53, true, true)
+    &.enabled
+      sprite-crop(I1, 136, 940, 104, 53)
