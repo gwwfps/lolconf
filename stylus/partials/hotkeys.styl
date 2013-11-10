@@ -1,19 +1,26 @@
 .section-hotkeys
   .subsection-smartcast
-    margin 40px 0
+    margin 40px 15px 40px 0
     background rgba(0, 0, 0, 0.2)
-    padding 0 15px 15px 15px
 
     &::before
       display block
       content ''
       separator()
     
-    .smartcast-header
+    .smartcast-header      
       text-align center
-      margin -29px 0 0 0
+      margin-top -29px
 
     .smartcast-group
-      .smartcast-group-title
+      display inline-flex
+      flex-direction column
+      padding 10px
+      .smartcast-group-title        
         padding 15px 0
         color options-blue-green
+
+      &.smartcast-group-summoners
+        padding-left 35px
+      &.smartcast-group-items
+        padding-left 35px
