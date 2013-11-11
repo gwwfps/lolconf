@@ -1,0 +1,37 @@
+smartcast:
+  - id: champion.ability.one
+    bindKey: GameEvents.evtCastSpell1
+    toggleKey: Quickbinds.evtCastSpell1smart
+  - id: champion.ability.two
+    bindKey: GameEvents.evtCastSpell2
+    toggleKey: Quickbinds.evtCastSpell2smart
+  - id: champion.ability.three
+    bindKey: GameEvents.evtCastSpell3
+    toggleKey: Quickbinds.evtCastSpell3smart
+  - id: champion.ability.ult
+    bindKey: GameEvents.evtCastSpell4
+    toggleKey: Quickbinds.evtCastSpell4smart
+  - id: summoner.spell.one
+    bindKey: GameEvents.evtCastAvatarSpell1
+    toggleKey: Quickbinds.evtCastAvatarSpell1smart
+  - id: summoner.spell.two
+    bindKey: GameEvents.evtCastAvatarSpell2
+    toggleKey: Quickbinds.evtCastAvatarSpell2smart
+  - id: item.one
+    bindKey: GameEvents.evtUseItem1
+    toggleKey: Quickbinds.evtUseItem1smart
+  - id: item.two
+    bindKey: GameEvents.evtUseItem2
+    toggleKey: Quickbinds.evtUseItem2smart
+  - id: item.three
+    bindKey: GameEvents.evtUseItem3
+    toggleKey: Quickbinds.evtUseItem3smart
+  - id: item.four
+    bindKey: GameEvents.evtUseItem4
+    toggleKey: Quickbinds.evtUseItem4smart
+  - id: item.five
+    bindKey: GameEvents.evtUseItem5
+    toggleKey: Quickbinds.evtUseItem5smart
+  - id: item.six
+    bindKey: GameEvents.evtUseItem6
+    toggleKey: Quickbinds.evtUseItem6smart
