@@ -1,18 +1,20 @@
-angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
+angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-location) ->
+  storage = LC-storage-factory LC-game-location.config-path!
+
   unprocessed = (setting, value) -> value
-  single-key-retriever = (setting) -> LC-game-config-storage.get setting.key
-  single-key-storer = !(setting, printed-value) -> LC-game-config-storage.set setting.key, printed-value
+  single-key-retriever = (setting) -> storage.get setting.key
+  single-key-storer = !(setting, printed-value) -> storage.set setting.key, printed-value
 
 
   retrievers =
     toggle: single-key-retriever
     range: single-key-retriever
     volume: (setting) ->
-      volume: LC-game-config-storage.get setting.key
-      muted: LC-game-config-storage.get setting.mute-key
+      volume: storage.get setting.key
+      muted: storage.get setting.mute-key
     resolution: (setting) ->
-      width: LC-game-config-storage.get setting.width-key
-      height: LC-game-config-storage.get setting.height-key
+      width: storage.get setting.width-key
+      height: storage.get setting.height-key
     graphics: single-key-retriever
     'fps-cap': single-key-retriever
     'window-mode': single-key-retriever
@@ -76,11 +78,11 @@ angular.module \lolconf .factory \LCGameConfig, (LC-game-config-storage) ->
     toggle: single-key-storer
     range: single-key-storer
     volume: !(setting, printed-value) ->
-      LC-game-config-storage.set setting.key, printed-value.volume
-      LC-game-config-storage.set setting.mute-key, printed-value.muted  
+      storage.set setting.key, printed-value.volume
+      storage.set setting.mute-key, printed-value.muted  
     resolution: !(setting, printed-value) ->
-      LC-game-config-storage.set setting.width-key, printed-value.width
-      LC-game-config-storage.set setting.height-key, printed-value.height
+      storage.set setting.width-key, printed-value.width
+      storage.set setting.height-key, printed-value.height
     graphics: single-key-storer
     'fps-cap': single-key-storer
     'window-mode': single-key-storer
