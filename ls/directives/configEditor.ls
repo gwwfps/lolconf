@@ -53,7 +53,7 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-prob
 
 
 rank-directive = (rank-keys) ->
-  ($compile, LC-game-config-storage) ->
+  ($compile) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
 
@@ -105,7 +105,7 @@ angular.module \lolconf .directive \lcConfigEditorRange, ($compile) ->
       ..append '<div class="range-slider"><input type="range" ng-model="value" min="' + min + '" max="' + max + '" step="' + increment + '" /></div>'
     ($compile element.contents!) scope
 
-angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope, LC-game-config-storage) ->
+angular.module \lolconf .directive \lcConfigEditorVolume, ($compile, $root-scope) ->
   link: !(scope, element, attrs) ->    
     element
       ..html ''
