@@ -1,4 +1,7 @@
 settings:
+  - id: client.version
+    type: version
+    key: General.CfgVersion
   # Video
   - id: video.resolution
     type: resolution

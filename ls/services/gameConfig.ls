@@ -20,6 +20,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     'window-mode': single-key-retriever
     'cooldown-mode': single-key-retriever
     'color-palette': single-key-retriever
+    version: single-key-retriever
 
   parsers =
     toggle: (setting, raw-value) ->
@@ -38,6 +39,9 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     'window-mode': unprocessed
     'cooldown-mode': unprocessed
     'color-palette': unprocessed
+    version: (setting, raw-value) ->
+      [major, minor, revision] = raw-value.split '.'
+      {major, minor, revision}
   
   get-value = (setting) ->
     parser = parsers[setting.type]
@@ -73,6 +77,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     'window-mode': unprocessed
     'cooldown-mode': unprocessed
     'color-palette': unprocessed
+    version: -> void    
 
   storers =
     toggle: single-key-storer

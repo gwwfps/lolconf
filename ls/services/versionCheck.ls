@@ -1,8 +1,7 @@
-angular.module \lolconf .factory \LCVersionCheck, (LC-game-config-storage) -> 
+angular.module \lolconf .factory \LCVersionCheck, (LC-game-config-definition, LC-game-config) -> 
   package-info = require './package.json'
-
-  ver = LC-game-config-storage.get 'General.CfgVersion'
-  [major, minor, revision] = ver.split '.'
+  setting = LC-game-config-definition.find \client.version
+  {major, minor, revision} = LC-game-config.get-value setting  
   [target-major, target-minor] = package-info.lol-version.split '.'
 
   {
