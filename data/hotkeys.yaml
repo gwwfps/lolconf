@@ -1,37 +1,49 @@
 smartcast:
   - id: champion.ability.one
+    type: smartcast
     bindKey: GameEvents.evtCastSpell1
     toggleKey: Quickbinds.evtCastSpell1smart
   - id: champion.ability.two
+    type: smartcast
     bindKey: GameEvents.evtCastSpell2
     toggleKey: Quickbinds.evtCastSpell2smart
   - id: champion.ability.three
+    type: smartcast
     bindKey: GameEvents.evtCastSpell3
     toggleKey: Quickbinds.evtCastSpell3smart
   - id: champion.ability.ult
+    type: smartcast
     bindKey: GameEvents.evtCastSpell4
     toggleKey: Quickbinds.evtCastSpell4smart
   - id: summoner.spell.one
+    type: smartcast
     bindKey: GameEvents.evtCastAvatarSpell1
     toggleKey: Quickbinds.evtCastAvatarSpell1smart
   - id: summoner.spell.two
+    type: smartcast
     bindKey: GameEvents.evtCastAvatarSpell2
     toggleKey: Quickbinds.evtCastAvatarSpell2smart
   - id: item.one
+    type: smartcast
     bindKey: GameEvents.evtUseItem1
     toggleKey: Quickbinds.evtUseItem1smart
   - id: item.two
+    type: smartcast
     bindKey: GameEvents.evtUseItem2
     toggleKey: Quickbinds.evtUseItem2smart
   - id: item.three
+    type: smartcast
     bindKey: GameEvents.evtUseItem3
     toggleKey: Quickbinds.evtUseItem3smart
   - id: item.four
+    type: smartcast
     bindKey: GameEvents.evtUseItem4
     toggleKey: Quickbinds.evtUseItem4smart
   - id: item.five
+    type: smartcast
     bindKey: GameEvents.evtUseItem5
     toggleKey: Quickbinds.evtUseItem5smart
   - id: item.six
+    type: smartcast
     bindKey: GameEvents.evtUseItem6
     toggleKey: Quickbinds.evtUseItem6smart
