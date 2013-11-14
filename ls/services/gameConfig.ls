@@ -49,7 +49,11 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
       [major, minor, revision] = raw-value.split '.'
       {major, minor, revision}
     smartcast: (setting, raw-value) ->
-      bind: raw-value.bind.substring 1, raw-value.bind.length - 1
+      bind: raw-value.bind
+        |> (s) -> s.substring 1, s.length - 1
+        |> (s) ->
+          | s == '<Unbound>' => ''
+          | otherwise        => s
       toggle: switch raw-value.toggle
         | '1' => true
         | '0' => false
