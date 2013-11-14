@@ -1,7 +1,10 @@
-angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-game-config-definition, LC-game-config) ->
+angular.module \lolconf .directive \lcConfigEditor, ($compile, LC-data, LC-definition-factory, LC-game-config) ->
   scope: true
   link: !(scope, element, attrs) ->
-    scope.setting = LC-game-config-definition.find attrs.lc-config-editor
+    definition-data = LC-data.load 'gameConfig'
+    config-definitions = LC-definition-factory definition-data.settings
+    
+    scope.setting = config-definitions.find attrs.lc-config-editor
     scope.value = LC-game-config.get-value scope.setting
 
     html = '<div class="config-editor config-editor-' + scope.setting.type + '" lc-config-editor-' + scope.setting.type + '></div>'
