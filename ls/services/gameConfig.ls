@@ -26,7 +26,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     version: single-key-retriever
     smartcast: (setting) ->
       bind: input-ini.get setting.bind-key
-      toggle: input-init.get setting.toggle-key
+      toggle: input-ini.get setting.toggle-key
 
   parsers =
     toggle: (setting, raw-value) ->
@@ -49,8 +49,8 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
       [major, minor, revision] = raw-value.split '.'
       {major, minor, revision}
     smartcast: (setting, raw-value) ->
-      bind: raw-value.bind
-      toggle: switch raw-value.bind
+      bind: raw-value.bind.substring 1, raw-value.bind.length - 1
+      toggle: switch raw-value.toggle
         | '1' => true
         | '0' => false
   
@@ -90,7 +90,7 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     'color-palette': unprocessed
     version: -> void
     smartcast: (setting, value) ->
-      bind: value.bind
+      bind: "[#{value.bind}]"
       toggle: switch value.toggle
         | true  => '1'
         | false => '0'
@@ -110,8 +110,8 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     'cooldown-mode': single-key-storer
     'color-palette': single-key-storer
     smartcast: !(setting, printed-value) ->
-      input-ini.set setting.bind-key, printed-value.bind-key
-      input-ini.set setting.toggle-key, printed-value.toggle-key
+      input-ini.set setting.bind-key, printed-value.bind
+      input-ini.set setting.toggle-key, printed-value.toggle
 
   set-value = !(setting, value) ->
     printer = printers[setting.type]

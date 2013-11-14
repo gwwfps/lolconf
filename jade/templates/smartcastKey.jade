@@ -1,3 +1,3 @@
 .smartcast-key
-  .smartcast-key-selector Q
-  .smartcast-key-toggle(ng-click='smart=!smart', ng-class='{enabled: smart}')
+  .smartcast-key-selector {{value.bind}}
+  .smartcast-key-toggle(ng-click='value.toggle=!value.toggle', ng-class='{enabled: value.toggle}')
