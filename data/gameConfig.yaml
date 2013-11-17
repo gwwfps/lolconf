@@ -132,6 +132,10 @@ settings:
     key: HUD.ShowTimestamps
     labelKey: GAMECONFIG_SHOW_TIMESTAMPS
     defaultValue: y
+  - id: ui.smatcast-on-release
+    type: toggle
+    key: HUD.SmartCastOnKeyRelease
+    labelKey: GAMECONFIG_SMARTCAST_ON_RELEASE
   # Game
   - id: game.mouse-speed
     type: range
