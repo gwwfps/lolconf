@@ -1,4 +1,4 @@
-angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-probe, LC-official-news) ->   
+angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-probe, LC-official-news, LC-version-check) ->   
   {defer} = require 'lodash'
 
   $scope.official-news = LC-official-news.list!
@@ -12,3 +12,6 @@ angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-p
       $scope.$emit \modal:hide
     else
       alert "Invalid location."
+
+  $scope.match = LC-version-check.match!
+  

@@ -1,4 +1,11 @@
 div(ng-controller="IndexCtrl")
+  p version match: {{match}}
+
+  .ui.menu
+    a.item LoLConf
+    a.active.item Official
+    a.item r/lol
+      
   .news
     div(ng-repeat="article in officialNews")
       h4 {{ article.title }}
