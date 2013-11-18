@@ -16,8 +16,9 @@ html(lang='en', ng-app='lolconf')
   body
     .main-title
       {{'APP_TITLE'|t}}
-    .main-close(lc-close)
-    .main-navigation(lc-navigation)      
-    .main-container(ng-view)
+    .main
+      .main-close(lc-close)
+      .main-navigation(lc-navigation)      
+      .main-container(ng-view)
     .modal-overlay
-    .modal-content
+    .modal(lc-modal)

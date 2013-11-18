@@ -1,5 +1,7 @@
 div(ng-controller="IndexCtrl")
   p version match: {{match}}
+  p
+    a(ng-click="trigger()") trigger modal
 
   .ui.menu
     a.item LoLConf
@@ -9,9 +11,3 @@ div(ng-controller="IndexCtrl")
   .news
     div(ng-repeat="article in officialNews")
       h4 {{ article.title }}
-
-  div(lc-modal="choose-location")
-    p {{'INSTRUCTION_GAME_LOCATION'|t}}
-    p
-      input(ng-model="gameLocation")
-    button(ng-click="confirmLocation()") {{'BUTTON_CONFIRM'|t}}

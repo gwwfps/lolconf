@@ -1,22 +1,24 @@
-angular.module \lolconf .directive \lcModal, ($root-scope) -> 
-  !(scope, element, attrs) ->
-    id = attrs.lc-modal
-    body = angular.element 'body'
-    modal = body.children '.modal-content'
+angular.module \lolconf .directive \lcModal, ($root-scope, $compile) ->
+  template-url: 'templates/modal.html'
+  transclude: true
+  link: !(scope, element, attrs) ->
+    {defer} = require 'lodash'
 
-    element.hide!
+    element.detach!
+    body = $ document.body
 
-    $root-scope.$on \modal:show, !(event, target-id) ->
-      if target-id == id
-        modal.append element
-        element.show!
-        body.add-class \modal-active
+    $root-scope.$on \modal:show, !(event, html) ->
+      content = element.find '.modal-content'
+      content.html html
+      ($compile content) scope
+      body.append element
+      defer -> body.add-class \modal-active
 
     $root-scope.$on \modal:hide, !(event) ->
       body.remove-class \modal-active      
+      element.detach!
 
 angular.module \lolconf .directive \lcModalClose ->
   !(scope, element, attrs) ->
     element.click !->
-      scope.$emit \modal:hide    
-
+      scope.$emit \modal:hide

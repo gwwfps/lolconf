@@ -3,9 +3,8 @@ angular.module \lolconf .controller \IndexCtrl, !($scope, LC-game-location, LC-p
 
   $scope.official-news = LC-official-news.list!
 
-  if !LC-game-location.get!
-    defer !->
-      $scope.$emit \modal:show, \choose-location
+  $scope.trigger = !->
+    $scope.$emit \modal:show, "{{'INSTRUCTION_GAME_LOCATION'|t}}"
 
   $scope.confirm-location = !->
     if LC-game-location.set $scope.game-location == $scope.game-location

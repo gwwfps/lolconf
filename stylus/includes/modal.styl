@@ -12,32 +12,30 @@
     visibility visible
     opacity 1  
 
-.modal-content
+.modal
   position absolute
   width 300px
   height 150px
   left 50%
   top 50%
   margin -150px 0 0 -150px
-  visibility hidden
   opacity 0
   z-index 2001
   padding 20px
 
   background white
+  color wet-asphalt
   box-shadow 0 1px 4px 0 rgba(0, 0, 0, 0.3)
   border-radius 3px
 
   transform scale(0.5)
   transform-origin 50% 50%
-  transition 0.3s all cubic-bezier(0.250, 0.460, 0.450, 0.940)
+  transition 0.3s all
 
 .modal-active
-  .main-container
+  .main
     -webkit-filter blur(2px)
 
-  .modal-content
-    visibility visible
+  .modal
     opacity 1
     transform scale(1)
-
