@@ -10,7 +10,7 @@ angular.module \lolconf .directive \lcModal, ($root-scope, $compile) ->
     $root-scope.$on \modal:show, !(event, html) ->
       content = element.find '.modal-content'
       content.html html
-      ($compile content) scope
+      ($compile content) event.target-scope
       body.append element
       defer -> body.add-class \modal-active
 
