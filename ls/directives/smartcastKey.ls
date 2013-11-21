@@ -19,6 +19,8 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
     scope.$watch 'value', !(new-value, old-value) ->
       if new-value != old-value
         LC-game-config.set-value scope.definition, new-value
+        if new-value.bind != old-value.bind
+          scope.$emit 'hotkey:bound', new-value.bind
     , true
 
     scope.$on 'smartcast:smart-all', !->
@@ -26,3 +28,7 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
 
     scope.$on 'smartcast:normal-all', !->
       scope.value.toggle = false
+
+    scope.$on 'hotkey:unbind', !(event, key, binding-scope) ->
+      if scope != binding-scope and scope.value.bind == key
+        scope.value.bind = ''
