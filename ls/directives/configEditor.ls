@@ -55,8 +55,8 @@ angular.module \lolconf .directive \lcConfigEditorResolution, ($compile, LC-prob
       ($compile element.contents!) scope
 
 
-rank-directive = (rank-keys) ->
-  ($compile) ->
+angular.module \lolconf .factory \LCConfigEditorRankFactory, ($compile) ->
+  (rank-keys) ->
     link: !(scope, element, attrs) ->
       {each} = require 'lodash'
 
@@ -72,26 +72,31 @@ rank-directive = (rank-keys) ->
 
       ($compile element.contents!) scope
         
-angular.module \lolconf .directive \lcConfigEditorGraphics, rank-directive [
-  \GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST
-]
+angular.module \lolconf .directive \lcConfigEditorGraphics, (LC-config-editor-rank-factory) ->
+  LC-config-editor-rank-factory [
+    \GAMECONFIG_GRAPHICS_LOWEST \GAMECONFIG_GRAPHICS_LOW \GAMECONFIG_GRAPHICS_MEDIUM \GAMECONFIG_GRAPHICS_HIGH \GAMECONFIG_GRAPHICS_HIGHEST
+  ]
 
-angular.module \lolconf .directive \lcConfigEditorFpsCap, rank-directive [
-  \GAMECONFIG_FPS_CAP_STABLE \GAMECONFIG_FPS_CAP_HIGH \GAMECONFIG_FPS_CAP_BENCHMARK
-  \GAMECONFIG_FPS_CAP_25 \GAMECONFIG_FPS_CAP_30 \GAMECONFIG_FPS_CAP_60 \GAMECONFIG_FPS_CAP_80
-]
+angular.module \lolconf .directive \lcConfigEditorFpsCap,  (LC-config-editor-rank-factory) ->
+  LC-config-editor-rank-factory [
+    \GAMECONFIG_FPS_CAP_STABLE \GAMECONFIG_FPS_CAP_HIGH \GAMECONFIG_FPS_CAP_BENCHMARK
+    \GAMECONFIG_FPS_CAP_25 \GAMECONFIG_FPS_CAP_30 \GAMECONFIG_FPS_CAP_60 \GAMECONFIG_FPS_CAP_80
+  ]
 
-angular.module \lolconf .directive \lcConfigEditorWindowMode, rank-directive [
-  \GAMECONFIG_WINDOW_MODE_FULL \GAMECONFIG_WINDOW_MODE_WINDOWED \GAMECONFIG_WINDOW_MODE_BORDERLESS
-]
+angular.module \lolconf .directive \lcConfigEditorWindowMode,  (LC-config-editor-rank-factory) ->
+  LC-config-editor-rank-factory [
+    \GAMECONFIG_WINDOW_MODE_FULL \GAMECONFIG_WINDOW_MODE_WINDOWED \GAMECONFIG_WINDOW_MODE_BORDERLESS
+  ]
 
-angular.module \lolconf .directive \lcConfigEditorCooldownMode, rank-directive [
-  \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
-]
+angular.module \lolconf .directive \lcConfigEditorCooldownMode,  (LC-config-editor-rank-factory) ->
+  LC-config-editor-rank-factory [
+    \GAMECONFIG_COOLDOWN_DISPLAY_NONE \GAMECONFIG_COOLDOWN_DISPLAY_SEC \GAMECONFIG_COOLDOWN_DISPLAY_MINSEC \GAMECONFIG_COOLDOWN_DISPLAY_SIMPLIFIED
+  ]
 
-angular.module \lolconf .directive \lcConfigEditorColorPalette, rank-directive [
-  \GAMECONFIG_COLOR_PALETTE_REGULAR \GAMECONFIG_COLOR_PALETTE_ALTERNATIVE \GAMECONFIG_COLOR_PALETTE_COLOR_BLIND
-]
+angular.module \lolconf .directive \lcConfigEditorColorPalette,  (LC-config-editor-rank-factory) ->
+  LC-config-editor-rank-factory [
+    \GAMECONFIG_COLOR_PALETTE_REGULAR \GAMECONFIG_COLOR_PALETTE_ALTERNATIVE \GAMECONFIG_COLOR_PALETTE_COLOR_BLIND
+  ]
 
 angular.module \lolconf .directive \lcConfigEditorRange, ($compile) ->
   link: !(scope, element, attrs) ->
