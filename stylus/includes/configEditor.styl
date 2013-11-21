@@ -50,6 +50,8 @@ config-editor-half-width()
       height 42px
       sprite('I6', 8, 793)
       background-color transparent
+      &:active, &:focus
+        outline 0
       &::-webkit-slider-thumb
         -webkit-appearance none
         sprite-crop(I1, 124, 781, 62, 46, true, true)
