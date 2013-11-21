@@ -3,6 +3,8 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
   transclude: true
   scope: true
   link: !(scope, element, attrs) ->
+    {defer} = require 'lodash'
+
     definition-data = LC-data.load 'hotkeys'
     smartcast-definitions = LC-definition-factory definition-data.smartcast
 
@@ -10,7 +12,13 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
     scope.value = LC-game-config.get-value scope.definition
 
     scope.prompt-bind = !->
-      scope.$emit 'modal:show', "<div>{{'HOTKEYS_BIND_INSTRUCTION'|t}}<input ng-keypress='bindKey($event)' /></div>"
+      scope.$emit 'modal:show', "<div>{{'HOTKEYS_BIND_INSTRUCTION'|t}}<input class='hotkey-bind' ng-keypress='bindKey($event)' /></div>"
+      defer !->
+        input = $ '.hotkey-bind'
+        input
+          ..focus!
+          ..on 'blur', !-> defer !->            
+            input.focus!
 
     scope.bindKey = !($event) ->
       scope.value.bind = LC-char-code-translator.translate $event.char-code
