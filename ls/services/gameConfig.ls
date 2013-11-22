@@ -3,10 +3,10 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
 
   game-cfg = LC-storage-factory LC-game-location.config-path!
   input-ini = LC-storage-factory (resolve LC-game-location.get!, 'Config', 'Input.ini')
-  hud-ini = LC-storage-factory (resolve LC-game-location.get!,
-    'RADS', 'solutions', 'lol_game_client_sln', 'releases', '0.0.0.251', 'deploy', 'DATA', 'menu', 'hud',
-    ('hud' + (game-cfg.get 'General.Width') + 'x' + (game-cfg.get 'General.Height') + '.ini')
-  )
+  # hud-ini = LC-storage-factory (resolve LC-game-location.get!,
+  #   'RADS', 'solutions', 'lol_game_client_sln', 'releases', '0.0.0.254', 'deploy', 'DATA', 'menu', 'hud',
+  #   ('hud' + (game-cfg.get 'General.Width') + 'x' + (game-cfg.get 'General.Height') + '.ini')
+  # )
 
   unprocessed = (setting, value) -> value
   single-key-retriever = (setting) -> @storage.get setting.key
