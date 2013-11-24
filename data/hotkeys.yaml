@@ -4,6 +4,7 @@ smartcast:
     bindKey: GameEvents.evtCastSpell1
     toggleKey: Quickbinds.evtCastSpell1smart    
     defaultValue: q
+    labelKey: HOTKEYS_KEY_ABILITY_1_PRIMARY
   - id: champion.ability.two
     type: smartcast
     bindKey: GameEvents.evtCastSpell2
