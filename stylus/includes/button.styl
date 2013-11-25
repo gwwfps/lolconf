@@ -28,4 +28,43 @@
       sprite-crop(I1, 46, 834, 45, 53)
     a
       sprite-crop(I1, 143, 887, 27, 53)
-    
+
+button-small-outer()
+  display inline-block
+  &::before, &::after
+    display inline-block
+    content ''
+    vertical-align bottom
+    sprite-crop(I6, 0, 665, 35, 43, true, true)
+  &::after
+    transform scaleX(-1)
+  &:hover
+    &::before, &::after
+      sprite-crop(I6, 0, 579, 35, 43)
+  &:active
+    &::before, &::after
+      sprite-crop(I6, 0, 622, 35, 43)
+
+button-small-inner()
+  display inline-block
+  padding 0 5px
+  height 43px
+  sprite-crop(I6, 35, 665, 10, 43, false, true)
+  line-height 43px
+  text-transform uppercase
+  font-size 12px
+  color options-blue-green
+  vertical-align middle
+  &:hover, &:active
+    color clouds
+  &:hover
+    text-shadow 0 0 3px rgba(255, 255, 255, 0.9)
+  &:hover
+    sprite-crop(I6, 35, 579, 10, 43)
+  &:active
+    sprite-crop(I6, 35, 622, 10, 43)
+
+.button-small
+  button-small-outer()
+  a
+    button-small-inner()    

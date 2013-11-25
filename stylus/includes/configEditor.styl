@@ -103,34 +103,10 @@ config-editor-half-width()
     list-style none
     padding 0
     margin 0    
-    &::before, &::after
-      display inline-block
-      content ''
-      vertical-align bottom
-      sprite-crop(I6, 0, 665, 35, 43, true, true)
-    &::after
-      transform scaleX(-1)
-    &:hover
-      &::before, &::after
-        sprite-crop(I6, 0, 579, 35, 43)
-    &:active
-      &::before, &::after
-        sprite-crop(I6, 0, 622, 35, 43)
+    button-small-outer()
     li
-      display inline-block
-      padding 0 5px
-      height 43px
-      sprite-crop(I6, 35, 665, 10, 43, false, true)
-      line-height 43px
-      text-transform uppercase
-      font-size 12px
-      color options-blue-green
-      vertical-align middle
-      &:hover, &:active, &.selected
+      button-small-inner()
+      &.selected
         color clouds
-      &:hover
-        text-shadow 0 0 3px rgba(255, 255, 255, 0.9)
-      &:hover, &.selected
+      &.selected
         sprite-crop(I6, 35, 579, 10, 43)
-      &:active
-        sprite-crop(I6, 35, 622, 10, 43)
