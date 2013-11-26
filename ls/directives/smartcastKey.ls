@@ -12,7 +12,7 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
     scope.value = LC-game-config.get-value scope.definition
 
     scope.prompt-bind = !->
-      scope.$emit 'modal:show', "<div>{{'HOTKEYS_BIND_INSTRUCTION'|t}}</div><div>{{'" + scope.definition.labelKey + "'|t}}</div><input class='hotkey-bind' ng-keypress='bindKey($event)' />"
+      scope.$emit 'modal:show', "hotkeyBind"
       defer !->
         input = $ '.hotkey-bind'
         input

@@ -7,16 +7,20 @@ angular.module \lolconf .directive \lcModal, ($root-scope, $compile) ->
     element.detach!
     body = $ document.body
 
-    $root-scope.$on \modal:show, !(event, html) ->
+    $root-scope.$on \modal:show, !(event, template-name) ->
       content = element.find '.modal-content'
-      content.html html
+      content
+        ..html ''
+        ..attr 'ng-include', "'modals/#{template-name}.html'"
       ($compile content) event.target-scope
       body.append element
       defer -> body.add-class \modal-active
 
     $root-scope.$on \modal:hide, !(event) ->
       body.remove-class \modal-active      
-      element.detach!
+      element
+        ..html ''
+        ..detach!
 
 angular.module \lolconf .directive \lcModalClose ->
   !(scope, element, attrs) ->
