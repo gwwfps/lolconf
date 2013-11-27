@@ -1,0 +1,6 @@
+div
+  p {{'INSTRUCTION_GAME_LOCATION'|t}}
+  p
+    input(type='file', nwdirectory, lc-directory-chooser, ng-model='location.chosen')
+  .button-small
+    a(ng-click='confirmChangeLocation()') {{'SETTINGS_CHANGE_LOCATION'|t}}

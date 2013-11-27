@@ -1,0 +1,5 @@
+.section-settings(ng-controller='SettingsCtrl')
+    h3 {{'SETTINGS_SUBSECTION_GAME_LOCATION'|t}}  
+    p {{location.saved}}
+    span.button-small
+      a(ng-click='promptChangeLocation()') {{'SETTINGS_CHANGE_LOCATION'|t}}

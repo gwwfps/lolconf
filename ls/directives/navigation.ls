@@ -13,7 +13,7 @@ angular.module \lolconf .directive \lcNavigation, ->
       {page: '/game', title-key: \SIDEBAR_GAME}
       {page: '/hidden', title-key: \SIDEBAR_HIDDEN}
       # {page: '/latency', title-key: \SIDEBAR_LATENCY, disabled: true}
-      {page: '/appConfig', title-key: \SIDEBAR_APP_CONFIG, disabled: true}
+      {page: '/settings', title-key: \SIDEBAR_SETTINGS}
     ]
 
     $scope.selected = find $scope.sections, {page: $location.path!}
