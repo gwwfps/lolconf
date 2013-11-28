@@ -27,7 +27,6 @@
     "lodash": "~1.2.1",
     "winston": "~0.7.1",
     "request": "~2.21.0",
-    "nconf": "~0.6.7",
     "windows": "0.0.6",
     "js-yaml": "~2.1.0",
     "fibers": "~1.0.1"

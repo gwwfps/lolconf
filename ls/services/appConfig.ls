@@ -1,11 +1,7 @@
-angular.module \lolconf .factory \LCAppConfig, -> 
-  require! nconf
-  nconf.file 'config.json'
-  
-  * game-path: ''
-  |> nconf.defaults
-  
-  * get: nconf~get
-    set: !(prop-name, value) ->
-      nconf~set ...
-      nconf.save! 
+angular.module \lolconf .factory \LCAppConfig, ->   
+  settings = local-storage.settings = local-storage.settings || {}
+
+  {
+    get: (key) -> settings[key]
+    set: !(key, value) -> settings[key] = value
+  }
