@@ -12,7 +12,6 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
   single-key-retriever = (setting) -> @storage.get setting.key
   single-key-storer = !(setting, printed-value) -> @storage.set setting.key, printed-value
 
-
   processors =
     toggle:
       storage: game-cfg
@@ -155,5 +154,12 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
   {
     get-value: get-value
     set-value: set-value
+    backup: !->
+      game-cfg.backup!
+      input-ini.backup!
+    restore: !->
+      game-cfg.restore!
+      input-ini.restore!
+    exists: -> game-cfg.backup-exists! and input-ini.backup-exists!
   }
 
