@@ -102,11 +102,13 @@ config-editor-half-width()
   ul
     list-style none
     padding 0
-    margin 0    
-    button-small-outer()
+    margin 0
+    display inline-block
+    button-small-ends()
     li
-      button-small-inner()
-      &.selected
-        color clouds
-      &.selected
-        sprite-crop(I6, 35, 579, 10, 43)
+      display inline-block
+      button-small-middle()
+      &:hover, &.selected
+        button-small-middle-hover()
+      &:active
+        button-small-middle-active()
