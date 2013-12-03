@@ -56,7 +56,7 @@ button-small-ends()
     sprite-crop(I6, 0, 665, 35, 43, true, true)
   &::after
     transform scaleX(-1)
-  &:hover
+  &:hover, &.highlight
     &::before, &::after
       sprite-crop(I6, 0, 579, 35, 43)
   &:active
@@ -69,7 +69,7 @@ button-small-ends()
   a
     display inline-block
     button-small-middle()
-  &:hover    
+  &:hover, &.highlight
     a
       button-small-middle-hover()
   &:active

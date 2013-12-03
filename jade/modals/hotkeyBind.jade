@@ -3,3 +3,10 @@ div
   p {{definition.labelKey|t}}
   p 
     input.hotkey-bind(ng-keypress='bindKey($event)')
+  p
+    .button-small(ng-class='{highlight:ctrl}', ng-click='ctrl=!ctrl')
+      a Ctrl
+    .button-small(ng-class='{highlight:alt}', ng-click='alt=!alt')
+      a Alt
+    .button-small(ng-class='{highlight:shift}', ng-click='shift=!shift')
+      a Shift
