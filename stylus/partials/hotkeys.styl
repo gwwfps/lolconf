@@ -24,3 +24,21 @@
         padding-left 35px
       &.smartcast-group-items
         padding-left 35px
+
+  .hotkeys-additional
+    .hotkeys-additional-title
+      sprite-crop(I6, 0, 407, 792, 43, true, true)
+      line-height 43px
+      font-size 18px
+      color options-blue-green
+      text-shadow 0 0 1px options-blue-green, 0 0 5px options-blue-green, 0 0 10px options-blue-green
+      &::before
+        content '+'
+        font-size 25px
+        margin 0 10px
+    &::after
+      content ''
+      display block
+      sprite-crop(I6, 0, 450, 792, 43, true, true)
+      transform scaleY(0.5)
+      margin-top -11px
