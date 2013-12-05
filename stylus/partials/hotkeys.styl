@@ -35,7 +35,14 @@
       &::before
         content '+'
         font-size 25px
+        width 10px
+        display inline-block
         margin 0 10px
+      &:hover
+        color clouds
+        text-shadow 0 0 1px options-blue-green, 0 0 3px options-blue-green, 0 0 5px options-blue-green, 0 0 7px options-blue-green, 0 0 10px options-blue-green
+        &::before
+          content '-'
     &::after
       content ''
       display block
