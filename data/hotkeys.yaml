@@ -45,18 +45,23 @@ smartcast:
     bindKey: GameEvents.evtUseItem3
     toggleKey: Quickbinds.evtUseItem3smart
     defaultValue: 3
+  - id: item.vision
+    type: smartcast
+    bindKey: GameEvents.evtUseVisionItem
+    toggleKey: Quickbinds.evtUseVisionItemsmart
+    defaultValue: 4
   - id: item.four
     type: smartcast
     bindKey: GameEvents.evtUseItem4
     toggleKey: Quickbinds.evtUseItem4smart
-    defaultValue: 4
+    defaultValue: 5
   - id: item.five
     type: smartcast
     bindKey: GameEvents.evtUseItem5
     toggleKey: Quickbinds.evtUseItem5smart
-    defaultValue: 5
+    defaultValue: 6
   - id: item.six
     type: smartcast
     bindKey: GameEvents.evtUseItem6
     toggleKey: Quickbinds.evtUseItem6smart
-    defaultValue: 6
+    defaultValue: 7
