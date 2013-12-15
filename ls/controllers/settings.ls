@@ -7,13 +7,10 @@ angular.module \lolconf .controller \SettingsCtrl, !($scope, LC-game-location, L
   $scope.backup = !-> LC-game-config.backup!
   $scope.restore = !-> LC-game-config.restore!
 
-  $scope.promptChangeLocation = !->
-    $scope.$emit \modal:show, 'gameLocation'
-
-  $scope.confirm-change-location = !->
-    if $scope.location.chosen and (LC-game-location.set $scope.location.chosen) == $scope.location.chosen
-      $scope
-        ..location.saved = LC-game-location.get!
-        ..$emit \modal:hide
-    else
-      alert!
+  $scope.$watch 'location.chosen', !(path) ->
+    if path 
+      if (LC-game-location.set path) == path
+        $scope.location.saved = LC-game-location.get!
+      else
+        alert!
+    
