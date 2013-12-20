@@ -3,48 +3,66 @@ smartcast:
     type: smartcast
     bindKey: GameEvents.evtCastSpell1
     toggleKey: Quickbinds.evtCastSpell1smart    
-    defaultValue: q
+    defaultValue:
+        bind: q
+        toggle: false
     labelKey: HOTKEYS_KEY_ABILITY_1_PRIMARY
   - id: champion.ability.two
     type: smartcast
     bindKey: GameEvents.evtCastSpell2
     toggleKey: Quickbinds.evtCastSpell2smart
-    defaultValue: w
+    defaultValue:
+        bind: w
+        toggle: false
   - id: champion.ability.three
     type: smartcast
     bindKey: GameEvents.evtCastSpell3
     toggleKey: Quickbinds.evtCastSpell3smart
-    defaultValue: e
+    defaultValue:
+        bind: e
+        toggle: false
   - id: champion.ability.ult
     type: smartcast
     bindKey: GameEvents.evtCastSpell4
     toggleKey: Quickbinds.evtCastSpell4smart
-    defaultValue: r
+    defaultValue:
+        bind: r
+        toggle: false
   - id: summoner.spell.one
     type: smartcast
     bindKey: GameEvents.evtCastAvatarSpell1
     toggleKey: Quickbinds.evtCastAvatarSpell1smart
-    defaultValue: d
+    defaultValue:
+        bind: d
+        toggle: false
   - id: summoner.spell.two
     type: smartcast
     bindKey: GameEvents.evtCastAvatarSpell2
     toggleKey: Quickbinds.evtCastAvatarSpell2smart
-    defaultValue: f
+    defaultValue:
+        bind: f
+        toggle: false
   - id: item.one
     type: smartcast
     bindKey: GameEvents.evtUseItem1
     toggleKey: Quickbinds.evtUseItem1smart
-    defaultValue: 1
+    defaultValue:
+        bind: 1
+        toggle: false
   - id: item.two
     type: smartcast
     bindKey: GameEvents.evtUseItem2
     toggleKey: Quickbinds.evtUseItem2smart
-    defaultValue: 2
+    defaultValue:
+        bind: 2
+        toggle: false
   - id: item.three
     type: smartcast
     bindKey: GameEvents.evtUseItem3
     toggleKey: Quickbinds.evtUseItem3smart
-    defaultValue: 3
+    defaultValue:
+        bind: 3
+        toggle: false
   - id: item.vision
     type: smartcast
     bindKey: GameEvents.evtUseVisionItem
@@ -56,14 +74,20 @@ smartcast:
     type: smartcast
     bindKey: GameEvents.evtUseItem4
     toggleKey: Quickbinds.evtUseItem4smart
-    defaultValue: 5
+    defaultValue:
+        bind: 5
+        toggle: false
   - id: item.five
     type: smartcast
     bindKey: GameEvents.evtUseItem5
     toggleKey: Quickbinds.evtUseItem5smart
-    defaultValue: 6
+    defaultValue:
+        bind: 6
+        toggle: false
   - id: item.six
     type: smartcast
     bindKey: GameEvents.evtUseItem6
     toggleKey: Quickbinds.evtUseItem6smart
-    defaultValue: 7
+    defaultValue:
+        bind: 7
+        toggle: false
