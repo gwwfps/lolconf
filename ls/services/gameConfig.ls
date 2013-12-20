@@ -98,8 +98,9 @@ angular.module \lolconf .factory \LCGameConfig, (LC-storage-factory, LC-game-loc
     smartcast:
       storage: input-ini
       retrieve: (setting) ->
-        bind: @storage.get setting.bind-key
-        toggle: @storage.get setting.toggle-key
+        bind = @storage.get setting.bind-key
+        toggle = @storage.get setting.toggle-key
+        if bind and toggle then {bind: bind, toggle: toggle}
       parse: (setting, raw-value) ->
         bind: raw-value.bind
           |> (s) -> s.substring 1, s.length - 1

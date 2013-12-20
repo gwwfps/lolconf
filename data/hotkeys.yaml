@@ -49,7 +49,9 @@ smartcast:
     type: smartcast
     bindKey: GameEvents.evtUseVisionItem
     toggleKey: Quickbinds.evtUseVisionItemsmart
-    defaultValue: 4
+    defaultValue:
+        bind: 4
+        toggle: false
   - id: item.four
     type: smartcast
     bindKey: GameEvents.evtUseItem4
