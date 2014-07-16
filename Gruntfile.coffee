@@ -2,48 +2,58 @@ module.exports = (grunt) ->
   path = require 'path'
   _ = grunt.util._
 
-  nwModules = _.map _.keys(grunt.file.readJSON('package.json').dependencies), (name) ->
+  dependencies = _.map _.keys(grunt.file.readJSON('package.json').dependencies), (name) ->
     path.join 'node_modules', name, '**'
 
-  grunt.initConfig    
+  grunt.initConfig
     outputDir: path.join(__dirname, 'build')
+    appDir: path.join(__dirname, 'build/resources/app')
 
-    clean: ['<%= outputDir %>', 'images/generated']
+    clean: ['<%= appDir %>', 'images/generated']
 
     compress:
       nw:
         files: [
           src: ['**/*']
           dest: ''
-          cwd: 'build/'
+          cwd: '<%= outputDir %>/'
           expand: true
-        ]          
+        ]
         options:
-          archive: 'lolconf.nw'
+          archive: 'lolconf.zip'
           mode: 'zip'
 
-    copy:      
+    copy:
       main:
         files: [
           expand: true
-          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*'], nwModules
-          dest: '<%= outputDir %>/'
+          src: _.union ['package.json', 'fonts/*', 'bower_components/**', 'data/*'], dependencies
+          dest: '<%= appDir %>/'
         ]
       probe:
         files: [
-          '<%= outputDir %>/lolconf-probe.exe':  path.join process.env.GOPATH, 'bin', 'lolconf-probe.exe'
+          '<%= appDir %>/lolconf-probe*':  path.join process.env.GOPATH, 'bin/lolconf-probe*'
         ]
       images:
         files: [
           expand: true
           src: ['images/**']
-          dest: '<%= outputDir %>/'
+          dest: '<%= appDir %>/'
         ]
 
-    lsc: 
+    coffee:
+      node:
+        expand: true
+        flatten: true
+        cwd: 'coffee/node'
+        src: ['*.coffee']
+        dest: '<%= appDir %>'
+        ext: '.js'
+
+    lsc:
       app:
         files:
-          '<%= outputDir %>/app.js': ['ls/**/*.ls']
+          '<%= appDir %>/app.js': ['ls/**/*.ls']
         options:
           join: true
       spriteCrop:
@@ -63,11 +73,11 @@ module.exports = (grunt) ->
           expand: true
           cwd: 'jade/'
           src: '**'
-          dest: '<%= outputDir %>/'
+          dest: '<%= appDir %>/'
           filter: 'isFile'
           ext: '.html'
         ]
- 
+
     stylus:
       main:
         options:
@@ -75,15 +85,13 @@ module.exports = (grunt) ->
             require 'nib'
           ]
         files:
-          '<%= outputDir %>/app.css': ['stylus/app.styl']
+          '<%= appDir %>/app.css': ['stylus/app.styl']
 
     shell:
       probe:
         command: 'go get github.com/gwwfps/lolconf-probe'
         options:
           stdout: true
-      pack:
-        command: 'copy /b nw.exe+lolconf.nw lolconf.exe'
 
     watch:
       ls:
@@ -96,6 +104,12 @@ module.exports = (grunt) ->
         files: 'stylus/**/*.styl'
         tasks: ['stylus']
 
+    'download-atom-shell':
+      version: '0.13.3'
+      outputDir: '<%= outputDir %>/'
+      downloadDir: 'atom_shell_download'
+      rebuild: false
+
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-compress'
@@ -103,29 +117,34 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-lsc'
   grunt.loadNpmTasks 'grunt-shell'
+  grunt.loadNpmTasks 'grunt-download-atom-shell'
 
   grunt.registerTask 'default', [
-    'build', 'debug', 'watch'
+    'build', 'debug'
   ]
 
   grunt.registerTask 'build', [
-    'init', 'clean', 'copy:main'
-    'lsc', 'stylus', 'jade'
+    'clean', 'download-atom-shell', 'init', 'copy:main'
+    'lsc', 'coffee:node', 'stylus', 'jade'
     'shell:probe', 'copy:probe', 'copy:images'
   ]
 
-  grunt.registerTask 'build:nw', [
-    'build', 'compress', 'shell:pack'
-  ]  
+  grunt.registerTask 'build:pack', [
+    'build', 'compress'
+  ]
+
+  grunt.registerTask 'build:watch', [
+    'build', 'debug', 'watch'
+  ]
 
   grunt.registerTask 'init', () ->
-    grunt.file.mkdir grunt.config('outputDir')
+    grunt.file.mkdir grunt.config('appDir')
 
   grunt.registerTask 'debug', () ->
-    nwPkgPath = path.join(grunt.config('outputDir'), 'package.json')
-    nwPkg = grunt.file.readJSON nwPkgPath
-    nwPkg.window.toolbar = true
-    nwPkg.window.height += 34
-    grunt.file.write nwPkgPath, JSON.stringify(nwPkg)
+    appMetaPath = path.join(grunt.config('appDir'), 'package.json')
+    appMetaData = grunt.file.readJSON appMetaPath
+    appMetaData.debug = true
+    grunt.file.write appMetaPath, JSON.stringify(appMetaData)

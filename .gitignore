@@ -20,7 +20,9 @@ npm-debug.log
 node_modules
 
 build
+atom_shell_download
 bower_components
+sync0*
 
 stylus/helpers/*.js
 images/generated
