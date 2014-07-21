@@ -32,7 +32,10 @@ module.exports = (grunt) ->
         ]
       probe:
         files: [
-          '<%= appDir %>/lolconf-probe*':  path.join process.env.GOPATH, 'bin/lolconf-probe*'
+          expand: true
+          flatten: true
+          src: path.join process.env.GOPATH, 'bin/lolconf-probe*'
+          dest: '<%= appDir %>/'
         ]
       images:
         files: [
