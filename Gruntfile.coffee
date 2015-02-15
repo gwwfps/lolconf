@@ -5,24 +5,18 @@ module.exports = (grunt) ->
   nwModules = _.map _.keys(grunt.file.readJSON('package.json').dependencies), (name) ->
     path.join 'node_modules', name, '**'
 
-  grunt.initConfig    
+  grunt.initConfig
     outputDir: path.join(__dirname, 'build')
 
     clean: ['<%= outputDir %>', 'images/generated']
 
-    compress:
-      nw:
-        files: [
-          src: ['**/*']
-          dest: ''
-          cwd: 'build/'
-          expand: true
-        ]          
-        options:
-          archive: 'lolconf.nw'
-          mode: 'zip'
+    nodewebkit:
+      options:
+        platforms: ['win']
+        buildDir: './release'
+      src: ['./build/**/*']
 
-    copy:      
+    copy:
       main:
         files: [
           expand: true
@@ -40,7 +34,7 @@ module.exports = (grunt) ->
           dest: '<%= outputDir %>/'
         ]
 
-    lsc: 
+    lsc:
       app:
         files:
           '<%= outputDir %>/app.js': ['ls/**/*.ls']
@@ -67,7 +61,7 @@ module.exports = (grunt) ->
           filter: 'isFile'
           ext: '.html'
         ]
- 
+
     stylus:
       main:
         options:
@@ -82,8 +76,6 @@ module.exports = (grunt) ->
         command: 'go get github.com/gwwfps/lolconf-probe'
         options:
           stdout: true
-      pack:
-        command: 'copy /b nw.exe+lolconf.nw lolconf.exe'
 
     watch:
       ls:
@@ -97,14 +89,7 @@ module.exports = (grunt) ->
         tasks: ['stylus']
 
 
-  grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-compress'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-contrib-jade'
-  grunt.loadNpmTasks 'grunt-contrib-stylus'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-lsc'
-  grunt.loadNpmTasks 'grunt-shell'
+  (require 'load-grunt-tasks') grunt
 
   grunt.registerTask 'default', [
     'build', 'debug', 'watch'
@@ -117,8 +102,8 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'build:nw', [
-    'build', 'compress', 'shell:pack'
-  ]  
+    'build', 'nodewebkit'
+  ]
 
   grunt.registerTask 'init', () ->
     grunt.file.mkdir grunt.config('outputDir')

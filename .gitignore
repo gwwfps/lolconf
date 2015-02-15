@@ -22,5 +22,8 @@ node_modules
 build
 bower_components
 
+cache
+release
+
 stylus/helpers/*.js
 images/generated

@@ -20,7 +20,7 @@ module.exports = ->
         wrapped = Future.wrap img~write, 1
         err = wrapped "#{base-dir}/#{output-filename}" .wait!
         if err
-          throw new Error err
+          console.log err
       write-img.run!
-      
+
       new nodes.String output-filename
