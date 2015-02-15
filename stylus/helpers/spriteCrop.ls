@@ -18,9 +18,7 @@ module.exports = ->
       img = gm "#{base-dir}/images/FoundryOptions_#{id}.png" .crop w, h, x, y
       write-img = Fiber !->
         wrapped = Future.wrap img~write, 1
-        err = wrapped "#{base-dir}/#{output-filename}" .wait!
-        if err
-          console.log err
+        wrapped "#{base-dir}/#{output-filename}" .wait!
       write-img.run!
 
       new nodes.String output-filename
