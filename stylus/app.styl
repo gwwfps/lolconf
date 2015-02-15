@@ -22,7 +22,7 @@ html *
   user-select none
 
 body
-  font-family 'Signika'
+  font-family 'Sans Guilt'
   background url('images/background.png') #2C2E2C
   color clouds
   margin 0
@@ -38,28 +38,28 @@ body
   position absolute
   top 0
   right 70px
-  left 0  
+  left 0
   -webkit-app-region drag
 
 .main-close
   position absolute
   right 20px
-  top 12px  
+  top 12px
   sprite-crop(I6, 99, 97, 47, 47, true, true)
   &:hover
     sprite-crop(I6, 146, 97, 47, 47)
   &:active
     sprite-crop(I6, 52, 97, 47, 47)
 
-.main-container 
+.main-container
   position absolute
   left 242px
   top 148px
   right 22px
   bottom 67px
-  overflow-y auto  
+  overflow-y auto
   margin 8px 14px 0 28px
-  font-size 15px
+  font-size 16px
 
   h3
     margin 20px 0 3px 0
@@ -85,7 +85,7 @@ body
     &:hover
       background-image url('images/scroll_thumb_hover.png')
     &:active
-      background-image url('images/scroll_thumb_active.png')      
+      background-image url('images/scroll_thumb_active.png')
 
   &.ng-enter
     transition 0.2s all

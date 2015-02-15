@@ -1,6 +1,7 @@
-Copyright (c) 2011, Pablo Impallari (www.impallari.com|impallari@gmail.com),
-Copyright (c) 2011, Igino Marini. (www.ikern.com|mail@iginomarini.com),
-with Reserved Font Name Cabin.
+This file is part of Sans Guilt and is for description.
+
+Copyright (C) 2011 OSP 
+http://ospublish.constantvzw.org.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
