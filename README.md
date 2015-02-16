@@ -1,7 +1,7 @@
 lolconf
 =======
 
-Configuration utility for League of Legends.
+Configuration utility for League of Legends. [Download](https://github.com/gwwfps/lolconf/releases)
 
 ![](https://github.com/gwwfps/lolconf/blob/master/screenshot.png)
 
