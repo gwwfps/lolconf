@@ -1,4 +1,4 @@
-angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC-definition-factory, LC-char-code-translator) ->  
+angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC-definition-factory, LC-char-code-translator) ->
   template-url: 'templates/smartcastKey.html'
   transclude: true
   scope: true
@@ -13,11 +13,12 @@ angular.module \lolconf .directive \lcSmartcastKey, (LC-game-config, LC-data, LC
 
     scope.prompt-bind = !->
       scope.$emit 'modal:show', "hotkeyBind"
+      input = $ '.hotkey-bind'
+      input.focus!
       defer !->
-        input = $ '.hotkey-bind'
         input
           ..focus!
-          ..on 'blur', !-> defer !->            
+          ..on 'blur', !-> defer !->
             input.focus!
 
     scope.bind-key = !($event) ->

@@ -5,7 +5,7 @@ angular.module \lolconf .directive \lcNavigation, ->
     {find} = require 'lodash'
 
     $scope.sections = [
-      {page: '/index', title-key: \SIDEBAR_INDEX}
+      # {page: '/index', title-key: \SIDEBAR_INDEX}
       {page: '/hotkeys', title-key: \SIDEBAR_HOTKEYS}
       {page: '/video', title-key: \SIDEBAR_VIDEO}
       {page: '/sound', title-key: \SIDEBAR_SOUND}

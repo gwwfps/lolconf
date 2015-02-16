@@ -1,88 +1,88 @@
 div
   p {{'HOTKEYS_BIND_INSTRUCTION'|t}}
   p {{definition.labelKey|t}}
-  p 
+  p
     input.hotkey-bind(ng-keypress='bindKey($event)')
-  
-  .keyboard
-    .keyboard-r4
-      a.keyboard-key.keyboard-key-disabled ESC
-      a.keyboard-key(ng-click='clickBind("F1")') F1
-      a.keyboard-key(ng-click='clickBind("F2")') F2
-      a.keyboard-key(ng-click='clickBind("F3")') F3
-      a.keyboard-key(ng-click='clickBind("F4")') F4
-      a.keyboard-key(ng-click='clickBind("F5")') F5
-      a.keyboard-key(ng-click='clickBind("F6)') F6
-      a.keyboard-key(ng-click='clickBind("F7)') F7
-      a.keyboard-key(ng-click='clickBind("F8")') F8
-      a.keyboard-key(ng-click='clickBind("F9")') F9
-      a.keyboard-key(ng-click='clickBind("F10")') F10
-      a.keyboard-key(ng-click='clickBind("F11")') F11
-      a.keyboard-key(ng-click='clickBind("F12")') F12
-    .keyboard-r4
-      a.keyboard-key(ng-click='clickBind("`")') `
-      a.keyboard-key(ng-click='clickBind("1")') 1
-      a.keyboard-key(ng-click='clickBind("2")') 2
-      a.keyboard-key(ng-click='clickBind("3")') 3
-      a.keyboard-key(ng-click='clickBind("4")') 4
-      a.keyboard-key(ng-click='clickBind("5")') 5
-      a.keyboard-key(ng-click='clickBind("6")') 6
-      a.keyboard-key(ng-click='clickBind("7")') 7
-      a.keyboard-key(ng-click='clickBind("8")') 8
-      a.keyboard-key(ng-click='clickBind("9")') 9
-      a.keyboard-key(ng-click='clickBind("0")') 0
-      a.keyboard-key(ng-click='clickBind("-")') -
-      a.keyboard-key(ng-click='clickBind("=")') =
-      a.keyboard-key.keyboard-key-1x200(ng-click='clickBind("Back")') <-
-    .keyboard-r3
-      a.keyboard-key.keyboard-key-1x150 ->|
-      a.keyboard-key(ng-click='clickBind("q")') Q
-      a.keyboard-key(ng-click='clickBind("w")') W
-      a.keyboard-key(ng-click='clickBind("e")') E
-      a.keyboard-key(ng-click='clickBind("r")') R
-      a.keyboard-key(ng-click='clickBind("t")') T
-      a.keyboard-key(ng-click='clickBind("y")') Y
-      a.keyboard-key(ng-click='clickBind("u")') U
-      a.keyboard-key(ng-click='clickBind("i")') I
-      a.keyboard-key(ng-click='clickBind("o")') O
-      a.keyboard-key(ng-click='clickBind("p")') P
-      a.keyboard-key(ng-click='clickBind("[")') [
-      a.keyboard-key(ng-click='clickBind("]")') ]
-      a.keyboard-key.keyboard-key-1x150(ng-click='clickBind("Backslash")') \
-    .keyboard-r2
-      a.keyboard-key.keyboard-key-1x175 CAP
-      a.keyboard-key(ng-click='clickBind("a")') A
-      a.keyboard-key(ng-click='clickBind("s")') S
-      a.keyboard-key(ng-click='clickBind("d")') D
-      a.keyboard-key(ng-click='clickBind("f")') F
-      a.keyboard-key(ng-click='clickBind("g")') G
-      a.keyboard-key(ng-click='clickBind("h")') H
-      a.keyboard-key(ng-click='clickBind("j")') J
-      a.keyboard-key(ng-click='clickBind("k")') K
-      a.keyboard-key(ng-click='clickBind("l")') L
-      a.keyboard-key(ng-click='clickBind("Semicolon")') ;
-      a.keyboard-key(ng-click='clickBind("\'")') '
-      a.keyboard-key.keyboard-key-1x225(ng-click='clickBind("Return")') ENTER
-    .keyboard-r1
-      a.keyboard-key.keyboard-key-1x225 SHIFT
-      a.keyboard-key(ng-click='clickBind("z")') Z
-      a.keyboard-key(ng-click='clickBind("x")') X
-      a.keyboard-key(ng-click='clickBind("c")') C
-      a.keyboard-key(ng-click='clickBind("v")') V
-      a.keyboard-key(ng-click='clickBind("b")') B
-      a.keyboard-key(ng-click='clickBind("n")') N
-      a.keyboard-key(ng-click='clickBind("m")') M
-      a.keyboard-key(ng-click='clickBind(",")') ,
-      a.keyboard-key(ng-click='clickBind(".")')
-        | .
-      a.keyboard-key(ng-click='clickBind("/")') /
-      a.keyboard-key.keyboard-key-1x275 SHIFT
-    .keyboard-r1
-      a.keyboard-key.keyboard-key-1x125 CTRL
-      a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled WIN
-      a.keyboard-key.keyboard-key-1x125 ALT
-      a.keyboard-key.keyboard-key-1x625(ng-click='clickBind("Space")') SPACE
-      a.keyboard-key.keyboard-key-1x125 ALT
-      a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled WIN
-      a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled CONTEXT
-      a.keyboard-key.keyboard-key-1x125 CTRL
+
+  //- .keyboard
+  //-   .keyboard-r4
+  //-     a.keyboard-key.keyboard-key-disabled ESC
+  //-     a.keyboard-key(ng-click='clickBind("F1")') F1
+  //-     a.keyboard-key(ng-click='clickBind("F2")') F2
+  //-     a.keyboard-key(ng-click='clickBind("F3")') F3
+  //-     a.keyboard-key(ng-click='clickBind("F4")') F4
+  //-     a.keyboard-key(ng-click='clickBind("F5")') F5
+  //-     a.keyboard-key(ng-click='clickBind("F6)') F6
+  //-     a.keyboard-key(ng-click='clickBind("F7)') F7
+  //-     a.keyboard-key(ng-click='clickBind("F8")') F8
+  //-     a.keyboard-key(ng-click='clickBind("F9")') F9
+  //-     a.keyboard-key(ng-click='clickBind("F10")') F10
+  //-     a.keyboard-key(ng-click='clickBind("F11")') F11
+  //-     a.keyboard-key(ng-click='clickBind("F12")') F12
+  //-   .keyboard-r4
+  //-     a.keyboard-key(ng-click='clickBind("`")') `
+  //-     a.keyboard-key(ng-click='clickBind("1")') 1
+  //-     a.keyboard-key(ng-click='clickBind("2")') 2
+  //-     a.keyboard-key(ng-click='clickBind("3")') 3
+  //-     a.keyboard-key(ng-click='clickBind("4")') 4
+  //-     a.keyboard-key(ng-click='clickBind("5")') 5
+  //-     a.keyboard-key(ng-click='clickBind("6")') 6
+  //-     a.keyboard-key(ng-click='clickBind("7")') 7
+  //-     a.keyboard-key(ng-click='clickBind("8")') 8
+  //-     a.keyboard-key(ng-click='clickBind("9")') 9
+  //-     a.keyboard-key(ng-click='clickBind("0")') 0
+  //-     a.keyboard-key(ng-click='clickBind("-")') -
+  //-     a.keyboard-key(ng-click='clickBind("=")') =
+  //-     a.keyboard-key.keyboard-key-1x200(ng-click='clickBind("Back")') <-
+  //-   .keyboard-r3
+  //-     a.keyboard-key.keyboard-key-1x150 ->|
+  //-     a.keyboard-key(ng-click='clickBind("q")') Q
+  //-     a.keyboard-key(ng-click='clickBind("w")') W
+  //-     a.keyboard-key(ng-click='clickBind("e")') E
+  //-     a.keyboard-key(ng-click='clickBind("r")') R
+  //-     a.keyboard-key(ng-click='clickBind("t")') T
+  //-     a.keyboard-key(ng-click='clickBind("y")') Y
+  //-     a.keyboard-key(ng-click='clickBind("u")') U
+  //-     a.keyboard-key(ng-click='clickBind("i")') I
+  //-     a.keyboard-key(ng-click='clickBind("o")') O
+  //-     a.keyboard-key(ng-click='clickBind("p")') P
+  //-     a.keyboard-key(ng-click='clickBind("[")') [
+  //-     a.keyboard-key(ng-click='clickBind("]")') ]
+  //-     a.keyboard-key.keyboard-key-1x150(ng-click='clickBind("Backslash")') \
+  //-   .keyboard-r2
+  //-     a.keyboard-key.keyboard-key-1x175 CAP
+  //-     a.keyboard-key(ng-click='clickBind("a")') A
+  //-     a.keyboard-key(ng-click='clickBind("s")') S
+  //-     a.keyboard-key(ng-click='clickBind("d")') D
+  //-     a.keyboard-key(ng-click='clickBind("f")') F
+  //-     a.keyboard-key(ng-click='clickBind("g")') G
+  //-     a.keyboard-key(ng-click='clickBind("h")') H
+  //-     a.keyboard-key(ng-click='clickBind("j")') J
+  //-     a.keyboard-key(ng-click='clickBind("k")') K
+  //-     a.keyboard-key(ng-click='clickBind("l")') L
+  //-     a.keyboard-key(ng-click='clickBind("Semicolon")') ;
+  //-     a.keyboard-key(ng-click='clickBind("\'")') '
+  //-     a.keyboard-key.keyboard-key-1x225(ng-click='clickBind("Return")') ENTER
+  //-   .keyboard-r1
+  //-     a.keyboard-key.keyboard-key-1x225 SHIFT
+  //-     a.keyboard-key(ng-click='clickBind("z")') Z
+  //-     a.keyboard-key(ng-click='clickBind("x")') X
+  //-     a.keyboard-key(ng-click='clickBind("c")') C
+  //-     a.keyboard-key(ng-click='clickBind("v")') V
+  //-     a.keyboard-key(ng-click='clickBind("b")') B
+  //-     a.keyboard-key(ng-click='clickBind("n")') N
+  //-     a.keyboard-key(ng-click='clickBind("m")') M
+  //-     a.keyboard-key(ng-click='clickBind(",")') ,
+  //-     a.keyboard-key(ng-click='clickBind(".")')
+  //-       | .
+  //-     a.keyboard-key(ng-click='clickBind("/")') /
+  //-     a.keyboard-key.keyboard-key-1x275 SHIFT
+  //-   .keyboard-r1
+  //-     a.keyboard-key.keyboard-key-1x125 CTRL
+  //-     a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled WIN
+  //-     a.keyboard-key.keyboard-key-1x125 ALT
+  //-     a.keyboard-key.keyboard-key-1x625(ng-click='clickBind("Space")') SPACE
+  //-     a.keyboard-key.keyboard-key-1x125 ALT
+  //-     a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled WIN
+  //-     a.keyboard-key.keyboard-key-1x125.keyboard-key-disabled CONTEXT
+  //-     a.keyboard-key.keyboard-key-1x125 CTRL

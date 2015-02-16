@@ -3,6 +3,8 @@ lolconf
 
 Configuration utility for League of Legends.
 
+![](https://github.com/gwwfps/lolconf/blob/master/screenshot.png)
+
 Build instructions
 ------------------
 
